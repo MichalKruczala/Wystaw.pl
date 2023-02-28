@@ -1,0 +1,139 @@
+package pl.it.portfolio.model;
+
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity(name = "tproduct")
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @ManyToMany
+    private Set<Order> orders = new HashSet<>();
+    private String name;
+    private int prize;
+    private int quantity;
+    private String description;
+    @Enumerated(EnumType.STRING)
+    private State state;
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
+
+    public Product(int id, Set<Order> orders, String name, int prize,
+                   int quantity, String description, State state, Category category) {
+        this.id = id;
+        this.orders = orders;
+        this.name = name;
+        this.prize = prize;
+        this.quantity = quantity;
+        this.description = description;
+        this.state = state;
+        this.category = category;
+    }
+
+    public Product(int id, String name, int prize,
+                   int quantity, String description, State state, Category category) {
+        this.id = id;
+
+        this.name = name;
+        this.prize = prize;
+        this.quantity = quantity;
+        this.description = description;
+        this.state = state;
+        this.category = category;
+    }
+
+    public Product() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrize() {
+        return prize;
+    }
+
+    public void setPrize(int prize) {
+        this.prize = prize;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+
+    public enum State {
+        NEW,
+        USED,
+        DAMAGED
+    }
+
+    public enum Category {
+        ELEKTRONIA,
+        MODA,
+        DZIECKO,
+        SPUERMARKET,
+        DOMIOGROD,
+        URODA,
+        ZDROWIE,
+        KULTURAIROZRYWKA,
+        SPORTITURYSTYKA,
+        MOTORYZACJA,
+        NIERUCHOMOSCI,
+        KOLEKCJEISZTUKA,
+        RIRMAIUSLUGI
+    }
+
+}
