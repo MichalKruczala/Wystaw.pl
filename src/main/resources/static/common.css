@@ -56,17 +56,17 @@ position: absolute;
          float:left;
          text-align: right;
          display:inline-block;
-         width: 570px;
+         width: 400px;
          height: 100%;
 
        }
-
        #contentwrapper {
          float:left;
          display:inline-block;
-         width: -moz-calc(100% - 570px);
-         width: -webkit-calc(100% - 570px);
-         width: calc(100% - 570px);
+         width: -moz-calc(100% - 400px);
+         width: -webkit-calc(100% - 400px);
+
          height: 99%;
 
        }
+

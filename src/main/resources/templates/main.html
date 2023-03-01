@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:font-size="http://www.w3.org/1999/xhtml">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Wystaw.pl</title>
@@ -29,53 +29,54 @@ background-size: cover;
   font-size: 30px;
 }
 
-
 #myBtn:hover {
   background-color: #44264A; /* ciemnofioletowy */
+}
+.leftPanel{
+border: 1px solid grey;
+width: 217px;
+}
+.features{
+border-bottom: 1px solid grey;
+padding-bottom: 25px;
+padding-left: 10px
+
 }
     </style>
 </head>
 <body>
-<button onclick="topFunction()" id="myBtn" >   ↑   </button>
+<div th:replace="~{fragments.html::buttonOnTop}"></div>
+<div th:replace="~{fragments.html::panel}"></div>
+<div th:replace="~{fragments.html::userPanel}"></div>
+<br>
+<br>
+<br>
+<div class="leftPanel">
+ <form action="/action_page.php"
+       oninput="x.value=parseInt(prize.value)">
+  <div class="features">
+   <h3>  Stan</h3>
+       <input type="radio" id="new" name="state" value="new">
+       <label for="new">Nowe</label><br>
+       <input type="radio" id="used" name="state" value="used">
+       <label for="used">Używane</label><br>
+       <input type="radio" id="damaged" name="state" value="damaged">
+       <label for="damaged">Uszkodzone</label><br>
+  </div>
 
 
-<div id="maincontainer">
- <div id="leftcolumn"><img src="logo.png"  height="51px"></div>
- <div id="contentwrapper">
- <form action="/listing">
+<div class="features">
+ <h3>  Cena</h3>
+ 0
+  <input type="range" id="prize" name="prize" min="0" max="10000"  value="10000">
+  10000<br>wybrana cena :
+  <output name="x" for="prize"></output> PLN<br>
 
-  <input placeholder="Czego szukasz?" style="height:46px;width:28%;font-size:15pt;" name="name" id="roll-input">
-  <select name="category" style="height:52px;width:19%;font-size:14pt;"  >
-    <option selected disabled hidden>Wybierz kategorię</option>
-    <option value="moda">Moda</option>
-    <option value="dziecko">Dziecko</option>
-    <option value="supermarket">Sumermarket</option>
-    <option value="domiogrod">Dom i ogród</option>
-    <option value="uroda">Uroda</option>
-    <option value="zdrowie">Zdrowie</option>
-    <option value="kulturairozrywka">Kultura i rozrywka</option>
-    <option value="sportiturystyka">Sport i turystyka</option>
-    <option value="motoryzacja">Motoryzacja</option>
-    <option value="nieruchomosci">Nieruchomości</option>
-    <option value="kolekcjeisztuka">Kolekcje i sztuka</option>
-    <option value="firmaiuslugi">Firma i usługi</option>
- </select>
- <input type="submit" id="buttonLookFor" style="height:52px;width:7%;font-size:15pt;"
-        value="Szukaj " onClick="return empty()" >
+</div>
+<div>
+ <input type="submit" placeholder="Szukaj">
+</div>
 </form>
-</div>
-</div>
-
-<!------przycisk do góry--------->
-<div class="dropdown" id="position">
-    <button onclick="myFunction()" class="dropbtn">Moje Konto</button>
-    <div id="myDropdown" class="dropdown-content">
-        <a href="#about">Mój koszyk</a>
-        <a href="#about">Wystawione przedmioty</a>
-        <a href="#about">Moje dane</a>
-        <a href="#home">Wyloguj</a>
-    </div>
-</div>
 <br>
 <br>
 <br>

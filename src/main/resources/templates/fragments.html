@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragmenty</title>
+</head>
+<body>
+    <div th:fragment="buttonOnTop">
+        <button onclick="topFunction()" id="myBtn" >   ↑   </button>
+    </div>
+
+    <div th:fragment="panel">
+        <div id="maincontainer">
+            <div id="leftcolumn"><img src="logo.png" height="51px"></div>
+            <div id="contentwrapper">
+                <form action="/listing">
+                    <input placeholder="Czego szukasz?" style="height:46px;width:28%;font-size:15pt;" name="name" id="roll-input">
+                    <select name="category" style="height:52px;width:19%;font-size:14pt;">
+                        <option selected disabled hidden>Wybierz kategorię</option>
+                        <option value="moda">Moda</option>
+                        <option value="dziecko">Dziecko</option>
+                        <option value="supermarket">Sumermarket</option>
+                        <option value="domiogrod">Dom i ogród</option>
+                        <option value="uroda">Uroda</option>
+                        <option value="zdrowie">Zdrowie</option>
+                        <option value="kulturairozrywka">Kultura i rozrywka</option>
+                        <option value="sportiturystyka">Sport i turystyka</option>
+                        <option value="motoryzacja">Motoryzacja</option>
+                        <option value="nieruchomosci">Nieruchomości</option>
+                        <option value="kolekcjeisztuka">Kolekcje i sztuka</option>
+                        <option value="firmaiuslugi">Firma i usługi</option>
+                    </select>
+                    <input type="submit" id="buttonLookFor" style="height:52px;width:7%;font-size:15pt;" value="Szukaj " onclick="return empty()">
+                </form>
+            </div>
+    </div>
+    </div>
+        <div th:fragment="userPanel">
+            <div class="dropdown" id="position">
+            <button onclick="myFunction()" class="dropbtn">Moje Konto</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#about">Mój koszyk</a>
+                <a href="#about">Wystawione przedmioty</a>
+                <a href="#about">Moje dane</a>
+                <a href="#home">Wyloguj</a>
+            </div>
+        </div>
+        </div>
+</body>
+</html>
