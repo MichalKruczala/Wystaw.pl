@@ -5,6 +5,7 @@
   font-size: 18x;
   border: none;
   cursor: pointer;
+
 }
 
 .dropbtn:hover, .dropbtn:focus {
@@ -40,3 +41,5 @@ background-color: #ddd;
 .show {
 display: block;
 }
+
+/* button on top*/
