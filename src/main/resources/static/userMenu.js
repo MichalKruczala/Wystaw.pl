@@ -15,3 +15,12 @@ window.onclick = function(event) {
     }
   }
 }
+
+function empty() {
+    var x;
+    x = document.getElementById("roll-input").value;
+    if (x == "") {
+        alert("Oczekiwana nazwa produktu");
+        return false;
+    };
+}

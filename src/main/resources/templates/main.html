@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:font-size="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Wystaw.pl</title>
@@ -14,29 +14,59 @@ background-image: url("tlo.jpg");
 background-size: cover;
 }
 #myBtn {
-  display: none; /* Hidden by default */
-  position: fixed; /* Fixed/sticky position */
-  bottom: 40px; /* Place the button at the bottom of the page */
-  right: 30px; /* Place the button 30px from the right */
-  z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
-  background-color: #794E7C; /* Set a background color */
-  color: white; /* Text color */
-  cursor: pointer; /* Add a mouse pointer on hover */
-  padding: 15px; /* Some padding */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 18px; /* Increase font size */
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #794E7C;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 2px;
+  font-size: 30px;
 }
 
+
 #myBtn:hover {
-  background-color: #44264A; /* Add a dark-grey background on hover */
+  background-color: #44264A; /* ciemnofioletowy */
 }
     </style>
 </head>
 <body>
-<button onclick="topFunction()" id="myBtn" title="Go to top">Do góry</button>
+<button onclick="topFunction()" id="myBtn" >   ↑   </button>
 
+
+<div id="maincontainer">
+ <div id="leftcolumn"><img src="logo.png"  height="51px"></div>
+ <div id="contentwrapper">
+ <form action="/listing">
+
+  <input placeholder="Czego szukasz?" style="height:46px;width:28%;font-size:15pt;" name="name" id="roll-input">
+  <select name="category" style="height:52px;width:19%;font-size:14pt;"  >
+    <option selected disabled hidden>Wybierz kategorię</option>
+    <option value="moda">Moda</option>
+    <option value="dziecko">Dziecko</option>
+    <option value="supermarket">Sumermarket</option>
+    <option value="domiogrod">Dom i ogród</option>
+    <option value="uroda">Uroda</option>
+    <option value="zdrowie">Zdrowie</option>
+    <option value="kulturairozrywka">Kultura i rozrywka</option>
+    <option value="sportiturystyka">Sport i turystyka</option>
+    <option value="motoryzacja">Motoryzacja</option>
+    <option value="nieruchomosci">Nieruchomości</option>
+    <option value="kolekcjeisztuka">Kolekcje i sztuka</option>
+    <option value="firmaiuslugi">Firma i usługi</option>
+ </select>
+ <input type="submit" id="buttonLookFor" style="height:52px;width:7%;font-size:15pt;"
+        value="Szukaj " onClick="return empty()" >
+</form>
+</div>
+</div>
+
+<!------przycisk do góry--------->
 <div class="dropdown" id="position">
     <button onclick="myFunction()" class="dropbtn">Moje Konto</button>
     <div id="myDropdown" class="dropdown-content">
@@ -46,7 +76,12 @@ background-size: cover;
         <a href="#home">Wyloguj</a>
     </div>
 </div>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
  <br>
  <br>
  <br>
@@ -117,6 +152,8 @@ background-size: cover;
  <br>
 juz
 <script>
+<!--przycisk on top -->
+
 let mybutton = document.getElementById("myBtn");
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {

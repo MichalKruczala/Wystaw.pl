@@ -1,3 +1,7 @@
+
+/* #44264A ciemnofioletowy
+    #794E7C jasnofioletowy    */
+
 #position{
 position: absolute;
   top: 8px;
@@ -23,3 +27,46 @@ position: absolute;
   #myBtn:hover {
     background-color: #555;
   }
+
+  #buttonLookFor {
+    border: none;
+    background-color: #794E7C;
+    color: white;
+    cursor: pointer;
+  }
+
+
+  #buttonLookFor:hover {
+    background-color: #44264A; /* ciemnofioletowy */
+    box-shadow: 10px 19px 16px 0px rgba(0,0,0,0.5);
+      z-index: 1;
+  }
+  #maincontainer{
+       text-align: left;
+       border-top: 2px solid grey;
+       border-bottom: 2px solid grey;
+       margin-top: 120px;
+       height: 51px;
+        width: 100%;
+     }
+
+
+
+       #leftcolumn {
+         float:left;
+         text-align: right;
+         display:inline-block;
+         width: 570px;
+         height: 100%;
+
+       }
+
+       #contentwrapper {
+         float:left;
+         display:inline-block;
+         width: -moz-calc(100% - 570px);
+         width: -webkit-calc(100% - 570px);
+         width: calc(100% - 570px);
+         height: 99%;
+
+       }
