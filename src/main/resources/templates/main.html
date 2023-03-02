@@ -34,36 +34,10 @@ background-size: cover;
 #myBtn:hover {
   background-color: #44264A; /* ciemnofioletowy */
 }
-.cartSign {
-    width: 6%;
-    height: 50px;
-    display: inline-block;
-    position: absolute;
-  top: 191px;
-  right: 80px;
-
-}
-
-.cartSign img {
-    height: 100%;
-    width: 70%;
-}
-
     </style>
 </head>
 <body>
-
-
-
-
-<a href="/cart" class="cartSign"><img src="cart.png"></a>
-
-
-
-
-
-
-
+<div th:replace="~{fragments.html::cartBtn}"></div>
 <div th:replace="~{fragments.html::buttonOnTop}"></div>
 <div th:replace="~{fragments.html::adOnTop}"></div>
 <div th:replace="~{fragments.html::panel}"></div>

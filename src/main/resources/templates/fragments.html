@@ -29,15 +29,15 @@
                     <option value="fashion">Moda</option>
                     <option value="kid">Dziecko</option>
                     <option value="supermarket">Sumermarket</option>
-                    <option value="houiseandgarden">Dom i ogród</option>
+                    <option value="houseAndGarden">Dom i ogród</option>
                     <option value="beauty">Uroda</option>
                     <option value="health">Zdrowie</option>
-                    <option value="cultrureandentertainment">Kultura i rozrywka</option>
-                    <option value="sportandturism">Sport i turystyka</option>
+                    <option value="cultrureAndEntertainment">Kultura i rozrywka</option>
+                    <option value="sportAndTurism">Sport i turystyka</option>
                     <option value="motorization">Motoryzacja</option>
                     <option value="property">Nieruchomości</option>
-                    <option value="collectionsandart">Kolekcje i sztuka</option>
-                    <option value="companyandservices">Firma i usługi</option>
+                    <option value="collectionsAndArt">Kolekcje i sztuka</option>
+                    <option value="companyAndServices">Firma i usługi</option>
                 </select>
                 <input type="submit" id="buttonLookFor" style="height:52px;width:7%;font-size:15pt;" value="Szukaj "
                        onclick="return empty()">
@@ -55,7 +55,7 @@
         </div>
     </div>
 </div>
-
+<div th:fragment="cartBtn"><a href="/cart" class="cartSign"><img src="cart.png"></a></div>
 
 <div th:fragment="leftPanel" class="leftPanel">                                          <!-- lewy panel ***  -->
     <form action="/action_page.php" oninput="x.value=parseInt(prize.value)">
@@ -69,15 +69,15 @@
                 <option value="fashion">Moda</option>
                 <option value="kid">Dziecko</option>
                 <option value="supermarket">Sumermarket</option>
-                <option value="houiseandgarden">Dom i ogród</option>
+                <option value="houseAndGarden">Dom i ogród</option>
                 <option value="beauty">Uroda</option>
                 <option value="health">Zdrowie</option>
-                <option value="cultrureandentertainment">Kultura i rozrywka</option>
-                <option value="sportandturism">Sport i turystyka</option>
+                <option value="cultrureAndEntertainment">Kultura i rozrywka</option>
+                <option value="sportAndTurism">Sport i turystyka</option>
                 <option value="motorization">Motoryzacja</option>
                 <option value="property">Nieruchomości</option>
-                <option value="collectionsandart">Kolekcje i sztuka</option>
-                <option value="companyandservices">Firma i usługi</option>
+                <option value="collectionsAndArt">Kolekcje i sztuka</option>
+                <option value="companyAndServices">Firma i usługi</option>
             </select>
         </div>
         <div class="features">
@@ -125,7 +125,7 @@
             <h3> Cena</h3>
             0
             <input type="range" id="prize" name="prize" min="0" max="80000" value="80000">
-            80000<br><br>wybrana cena :
+            80000<br><br> Cena do:
             <output name="x" for="prize"></output>
             PLN<br>
         </div>

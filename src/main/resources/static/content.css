@@ -1,28 +1,30 @@
-
     /*css of middle section of page(left panel,content,right panel) */
 
-#contentContainer {
-width: 100%;
-min-height: 100vh;
-}
-#lefSubContainer {
-display: inline-block;
-width: 25%;
-}
-#middleSubContainer {
-display: inline-block;
-width: 50%;
-background: blue;
- position: absolute;
- margin-left:20px;
-  top: 303px;
-}
-#rightSubContainer{
-width:20%;
-margin-right:50px;
-margin-left:50px;
-position: absolute;
-top: 303px;
-left: 70%;
-display: inline-block;
-}
+    #contentContainer {
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    #lefSubContainer {
+        display: inline-block;
+        width: 25%;
+    }
+
+    #middleSubContainer {
+        display: inline-block;
+        width: 50%;
+        background: blue;
+        position: absolute;
+        margin-left: 20px;
+        top: 303px;
+    }
+
+    #rightSubContainer {
+        width: 20%;
+        margin-right: 50px;
+        margin-left: 50px;
+        position: absolute;
+        top: 303px;
+        left: 70%;
+        display: inline-block;
+    }
