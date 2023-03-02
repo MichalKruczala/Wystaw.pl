@@ -34,7 +34,9 @@ position: absolute;
     color: white;
     cursor: pointer;
   }
-
+   #selectCategory:hover{
+   box-shadow: 10px 19px 16px 0px rgba(0,0,0,0.5);
+    }
 
   #buttonLookFor:hover {
     background-color: #44264A; /* ciemnofioletowy */
@@ -45,7 +47,7 @@ position: absolute;
        text-align: left;
        border-top: 2px solid grey;
        border-bottom: 2px solid grey;
-       margin-top: 120px;
+
        height: 51px;
         width: 100%;
      }
@@ -69,4 +71,12 @@ position: absolute;
          height: 99%;
 
        }
+       div#adOnTop{
+       height: 180px;
+
+       }
+       comercial{
+       object-fit:cover;
+       }
+
 

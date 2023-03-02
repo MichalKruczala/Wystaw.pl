@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Wystaw.pl</title>
@@ -35,124 +35,177 @@ background-size: cover;
 .leftPanel{
 border: 1px solid grey;
 width: 217px;
+ background-color: rgba(170, 155, 179, 0.38); /* przezroczysysty fioletowy */
+block-size: fit-content;
 }
 .features{
 border-bottom: 1px solid grey;
 padding-bottom: 25px;
 padding-left: 10px
-
 }
+.buttonsLeftPanel{
+    text-align: center;
+    border: 1px solid #44264A;
+    background-color: #794E7C;
+    color: white;
+    cursor: pointer;
+    font-size: 167%;
+    }
+    .buttonsLeftPanel:hover{
+    background-color: #44264A;
+}
+
     </style>
 </head>
 <body>
 <div th:replace="~{fragments.html::buttonOnTop}"></div>
+<div th:replace="~{fragments.html::adOnTop}"></div>
 <div th:replace="~{fragments.html::panel}"></div>
 <div th:replace="~{fragments.html::userPanel}"></div>
 <br>
 <br>
 <br>
 <div class="leftPanel">
- <form action="/action_page.php"
-       oninput="x.value=parseInt(prize.value)">
-  <div class="features">
-   <h3>  Stan</h3>
-       <input type="radio" id="new" name="state" value="new">
-       <label for="new">Nowe</label><br>
-       <input type="radio" id="used" name="state" value="used">
-       <label for="used">Używane</label><br>
-       <input type="radio" id="damaged" name="state" value="damaged">
-       <label for="damaged">Uszkodzone</label><br>
-  </div>
+    <form action="/action_page.php"
+          oninput="x.value=parseInt(prize.value)">
+
+        <div class="features">
+            <h3>Sposoby Dostawy</h3>
+            <input type="radio" id="inpost" name="delivery" value="inpost">
+            <label for="inpost">Paczkomaty Inpost</label><br>
+            <input type="radio" id="courier" name="delivery" value="courier">
+            <label for="courier">Kurier</label><br>
+            <input type="radio" id="selfcollect" name="delivery" value="selfcollect">
+            <label for="selfcollect">Odbiór Własny</label><br>
+            <input type="radio" id="abroad" name="state" value="abroad">
+            <label for="abroad">Dostawa za granicę</label><br>
+        </div>
+        <div class="features">
+            <h3>Stan</h3>
+            <input type="radio" id="new" name="state" value="new">
+            <label for="new">Nowe</label><br>
+            <input type="radio" id="used" name="state" value="used">
+            <label for="used">Używane</label><br>
+            <input type="radio" id="damaged" name="state" value="damaged">
+            <label for="damaged">Uszkodzone</label><br>
+        </div>
+
+        <!style="height:46px;width:28%;font-size:15pt;"!>
+        <div class="features">
+            <h3>Lokalizacja</h3>
+            <select name="category">
+                <option selected disabled hidden>Wybierz lokalizację</option>
+                <option value="warszawa">Warszawa</option>
+                <option value="krakow">Kraków</option>
+                <option value="lodz">Łódź</option>
+                <option value="wroclaw">Wrocław</option>
+                <option value="poznan">Poznań</option>
+                <option value="gdansk">Gdańsk</option>
+                <option value="szczecin">Szczecin</option>
+                <option value="bydgoszcz">Bydgoszcz</option>
+                <option value="lublin">Lublin</option>
+                <option value="bualystok">Białystok</option>
+                <option value="katowice">Katowice</option>
+                <option value="gdynia">Gdynia</option>
+                <option value="czestochowa">Częstochowa</option>
+                <option value="radom">Radom</option>
+                <option value="rzeszow">Rzeszów</option>
+            </select>
+
+        </div>
 
 
-<div class="features">
- <h3>  Cena</h3>
- 0
-  <input type="range" id="prize" name="prize" min="0" max="10000"  value="10000">
-  10000<br>wybrana cena :
-  <output name="x" for="prize"></output> PLN<br>
+        <div class="features">
+            <h3> Cena</h3>
+            0
+            <input type="range" id="prize" name="prize" min="0" max="10000" value="10000">
+            10000<br>wybrana cena :
+            <output name="x" for="prize"></output>
+            PLN<br>
 
+        </div>
+        <div>
+            <input type="reset" class="buttonsLeftPanel" value="Resetuj ">
+            <input type="submit" class="buttonsLeftPanel" id="rightButtonLeftPanel" placeholder="Szukaj ">
+        </div>
+    </form>
 </div>
-<div>
- <input type="submit" placeholder="Szukaj">
-</div>
-</form>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
-4
- <br>
- <br>
- <br>
- <br>
- <br>
-5
- <br>
-juz
-<script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    4
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    5
+    <br>
+    juz
+    <script>
 <!--przycisk on top -->
 
 let mybutton = document.getElementById("myBtn");
@@ -168,6 +221,8 @@ function topFunction() {
 document.body.scrollTop = 0;
 document.documentElement.scrollTop = 0;
 }
-</script>
+
+
+    </script>
 </body>
 </html>
