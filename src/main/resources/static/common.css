@@ -4,29 +4,11 @@
 
 #position{
 position: absolute;
-  top: 8px;
-  right: 20px;
+  top: 191px;
+  right: 10px;
   }
 
-  #myBtn {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    font-size: 18px;
-    border: none;
-    outline: none;
-    background-color: red;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 4px;
-  }
 
-  #myBtn:hover {
-    background-color: #555;
-  }
 
   #buttonLookFor {
     border: none;
@@ -94,6 +76,7 @@ position: absolute;
            width: 217px;
             background-color: rgba(170, 155, 179, 0.38); /* przezroczysysty fioletowy */
            block-size: fit-content;
+           display: inline-block;
            }
 
            .buttonsLeftPanel{

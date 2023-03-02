@@ -17,34 +17,28 @@ public class Product {
     private int quantity;
     private String description;
     @Enumerated(EnumType.STRING)
+    private Localization localization;
+    @Enumerated(EnumType.STRING)
     private State state;
     @Enumerated(EnumType.STRING)
     private Category category;
 
 
+
+
     public Product(int id, Set<Order> orders, String name, int prize,
-                   int quantity, String description, State state, Category category) {
+                   int quantity, String description, Localization localization, State state, Category category) {
         this.id = id;
         this.orders = orders;
         this.name = name;
         this.prize = prize;
         this.quantity = quantity;
+        this.localization = localization;
         this.description = description;
         this.state = state;
         this.category = category;
     }
 
-    public Product(int id, String name, int prize,
-                   int quantity, String description, State state, Category category) {
-        this.id = id;
-
-        this.name = name;
-        this.prize = prize;
-        this.quantity = quantity;
-        this.description = description;
-        this.state = state;
-        this.category = category;
-    }
 
     public Product() {
     }
@@ -77,6 +71,13 @@ public class Product {
         return prize;
     }
 
+    public Localization getLocalization() {
+        return localization;
+    }
+
+    public void setLocalization(Localization localization) {
+        this.localization = localization;
+    }
     public void setPrize(int prize) {
         this.prize = prize;
     }
@@ -113,6 +114,21 @@ public class Product {
         this.category = category;
     }
 
+    public enum Localization {
+        WARSZAWA,
+        KRAKOW,
+        LODZ,
+        POZNAN,
+        GDANSK,
+        SZCZECIN,
+        BYDGOSZCZ,
+        KATOWICE,
+        GDYNIA,
+        CZESTOCHOWA,
+        RADOM,
+        RZESZOW;
+
+    }
 
     public enum State {
         NEW,

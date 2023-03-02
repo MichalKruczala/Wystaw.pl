@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Fragmenty</title>
 </head>
 <body>
-<div th:fragment="adOnTop">                                              <!-- reklama u góry -->
+
+<div th:fragment="adOnTop">                                                        <!-- reklama u góry -->
     <div id="adOnTop" height="181px">
         <img id="comercial" src="reklama.jpg" width="100%" height="181px">
     </div>
 </div>
 
-<div th:fragment="buttonOnTop">                                           <!-- przycisk do góry ***  -->
+<div th:fragment="buttonOnTop">                                                    <!-- przycisk do góry ***  -->
     <button onclick="topFunction()" id="myBtn"> ↑</button>
 </div>
 
@@ -24,18 +26,18 @@
                        id="roll-input">
                 <select name="category" id="selectCategory" style="height:52px;width:19%;font-size:14pt;">
                     <option selected disabled hidden>Wybierz kategorię</option>
-                    <option value="moda">Moda</option>
-                    <option value="dziecko">Dziecko</option>
+                    <option value="fashion">Moda</option>
+                    <option value="kid">Dziecko</option>
                     <option value="supermarket">Sumermarket</option>
-                    <option value="domiogrod">Dom i ogród</option>
-                    <option value="uroda">Uroda</option>
-                    <option value="zdrowie">Zdrowie</option>
-                    <option value="kulturairozrywka">Kultura i rozrywka</option>
-                    <option value="sportiturystyka">Sport i turystyka</option>
-                    <option value="motoryzacja">Motoryzacja</option>
-                    <option value="nieruchomosci">Nieruchomości</option>
-                    <option value="kolekcjeisztuka">Kolekcje i sztuka</option>
-                    <option value="firmaiuslugi">Firma i usługi</option>
+                    <option value="houiseandgarden">Dom i ogród</option>
+                    <option value="beauty">Uroda</option>
+                    <option value="health">Zdrowie</option>
+                    <option value="cultrureandentertainment">Kultura i rozrywka</option>
+                    <option value="sportandturism">Sport i turystyka</option>
+                    <option value="motorization">Motoryzacja</option>
+                    <option value="property">Nieruchomości</option>
+                    <option value="collectionsandart">Kolekcje i sztuka</option>
+                    <option value="companyandservices">Firma i usługi</option>
                 </select>
                 <input type="submit" id="buttonLookFor" style="height:52px;width:7%;font-size:15pt;" value="Szukaj "
                        onclick="return empty()">
@@ -43,11 +45,10 @@
         </div>
     </div>
 </div>
-<div th:fragment="userPanel">
+<div th:fragment="userPanel">                                                        <!--  przycisk moje konto   -->
     <div class="dropdown" id="position">
         <button onclick="myFunction()" class="dropbtn">Moje Konto</button>
         <div id="myDropdown" class="dropdown-content">
-            <a href="#about">Mój koszyk</a>
             <a href="#about">Wystawione przedmioty</a>
             <a href="#about">Moje dane</a>
             <a href="#home">Wyloguj</a>
@@ -56,26 +57,27 @@
 </div>
 
 
-<div th:fragment="leftPanel" class="leftPanel">                                 <!-- lewy panel ***  -->
-    <form action="/action_page.php"
-          oninput="x.value=parseInt(prize.value)">
-        <div  class="featuresAlignCenter"><h2>Przeglądaj Oferty</h2></div>
+<div th:fragment="leftPanel" class="leftPanel">                                          <!-- lewy panel ***  -->
+    <form action="/action_page.php" oninput="x.value=parseInt(prize.value)">
+        <div class="featuresAlignCenter">
+            <h2>Przeglądaj Oferty</h2>
+        </div>
         <div class="features">
             <h3>Wybierz Kategorię</h3><br>
             <select name="category">
                 <option selected disabled hidden>kategorie</option>
-                <option value="moda">Moda</option>
-                <option value="dziecko">Dziecko</option>
+                <option value="fashion">Moda</option>
+                <option value="kid">Dziecko</option>
                 <option value="supermarket">Sumermarket</option>
-                <option value="domiogrod">Dom i ogród</option>
-                <option value="uroda">Uroda</option>
-                <option value="zdrowie">Zdrowie</option>
-                <option value="kulturairozrywka">Kultura i rozrywka</option>
-                <option value="sportiturystyka">Sport i turystyka</option>
-                <option value="motoryzacja">Motoryzacja</option>
-                <option value="nieruchomosci">Nieruchomości</option>
-                <option value="kolekcjeisztuka">Kolekcje i sztuka</option>
-                <option value="firmaiuslugi">Firma i usługi</option>
+                <option value="houiseandgarden">Dom i ogród</option>
+                <option value="beauty">Uroda</option>
+                <option value="health">Zdrowie</option>
+                <option value="cultrureandentertainment">Kultura i rozrywka</option>
+                <option value="sportandturism">Sport i turystyka</option>
+                <option value="motorization">Motoryzacja</option>
+                <option value="property">Nieruchomości</option>
+                <option value="collectionsandart">Kolekcje i sztuka</option>
+                <option value="companyandservices">Firma i usługi</option>
             </select>
         </div>
         <div class="features">
@@ -86,7 +88,7 @@
             <label for="courier">Kurier</label><br>
             <input type="radio" id="selfcollect" name="delivery" value="selfcollect">
             <label for="selfcollect">Odbiór Własny</label><br>
-            <input type="radio" id="abroad" name="state" value="abroad">
+            <input type="radio" id="abroad" name="delivery" value="abroad">
             <label for="abroad">Dostawa za granicę</label><br>
         </div>
         <div class="features">
@@ -98,7 +100,6 @@
             <input type="radio" id="damaged" name="state" value="damaged">
             <label for="damaged">Uszkodzone</label><br>
         </div>
-        <!style="height:46px;width:28%;font-size:15pt;"!>
         <div class="features">
             <h3>Lokalizacja</h3>
             <select name="city">
@@ -134,7 +135,7 @@
         </div>
     </form>
 </div>
-
-
+<div th:fragment="rightPanel" id="rightSubContainer"><img id="fillDiv" src="reklama2.jpg" width="270px"></div>   <!-- right panel -->
 </body>
+
 </html>
