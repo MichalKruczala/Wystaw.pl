@@ -47,13 +47,9 @@ position: absolute;
        text-align: left;
        border-top: 2px solid grey;
        border-bottom: 2px solid grey;
-
        height: 51px;
         width: 100%;
      }
-
-
-
        #leftcolumn {
          float:left;
          text-align: right;
@@ -78,5 +74,41 @@ position: absolute;
        comercial{
        object-fit:cover;
        }
+       .features{
+       border-bottom: 1px solid grey;
+       padding-bottom: 10px;
+       padding-left: 10px
+       }
+       .featuresAlignCenter{
+       border-bottom: 1px solid grey;
+              padding-bottom: 6px;
+              text-align:center;
+              color:#794E7C;
+       }
 
+
+           .leftPanel{
+           margin-top: 60px;
+           margin-left: 80px;
+           border: 1px solid grey;
+           width: 217px;
+            background-color: rgba(170, 155, 179, 0.38); /* przezroczysysty fioletowy */
+           block-size: fit-content;
+           }
+
+           .buttonsLeftPanel{
+           text-align: center;
+           border: 1px solid #44264A;
+           background-color: #794E7C;
+           color: white;
+           cursor: pointer;
+           font-size: 167%;
+           }
+         .buttonsLeftPanel:hover{
+           background-color: #44264A;
+            box-shadow: 10px 19px 16px 0px rgba(0,0,0,0.5);
+         }
+         #h2LeftPanel{
+         color:#794E7C;
+         }
 
