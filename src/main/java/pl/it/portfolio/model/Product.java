@@ -23,9 +23,6 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private Category category;
 
-
-
-
     public Product(int id, Set<Order> orders, String name, int prize,
                    int quantity, String description, Localization localization, State state, Category category) {
         this.id = id;
