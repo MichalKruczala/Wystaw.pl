@@ -8,9 +8,9 @@
 }
 
 :root {
-	--blue: #0071FF;
+	--purple: #794E7C;
 	--light-blue: #B6DBF6;
-	--dark-blue: #005DD1;
+	--dark-purple: #44264A;
 	--grey: #f2f2f2;
 }
 
@@ -94,14 +94,16 @@ body {
 	width: 100%;
 	padding: 16px 0;
 	border-radius: 15px;
-	background: var(--blue);
-	color: #fff;
+	background-color: rgba(170, 155, 179, 0.38);
+    text-align:center;
+
 	font-weight: 500;
 	font-size: 16px;
 	border: none;
-	cursor: pointer;
+	cursor: grab;
 	transition: all .3s ease;
 }
 .select-image:hover {
-	background: var(--dark-blue);
+	background: var(--dark-purple);
+	box-shadow: 10px 19px 16px 0px rgba(0, 0, 0, 0.5);
 }

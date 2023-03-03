@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="probny.css">
+    <link rel="stylesheet" href="common.css">
 
 
     <title>Input Image With Preview Image</title>
 </head>
 <body>
-<!--   działaaaa   -->
+<!--   działaaaa !!!!!!!!!!!!!!!!  -->
 <form action="/try" method="post" enctype="multipart/form-data">>
     <div class="container">
         <input type="file" id="file" name="image" accept="image/*" hidden>
         <div class="img-area" data-img="">  <!---->
             <i class='bx bxs-cloud-upload icon'></i>
-            <h3>Upload Image</h3>
-            <p>Image size must be less than <span>2MB</span></p>
+            <h3>Twoje zdjęcie</h3>
+            <p>Załącznik powinien ważyć poniżej <span>2MB</span></p>
         </div>
-        <input class="select-image">
-        <input type="submit" value="Zrób robote">
+        <input class="select-image" style="color:red;" placeholder="Wybierz zdjęcie"><br>
+        <input type="submit" class="select-image" value="Zrób robote">
+
 
     </div>
 </form>

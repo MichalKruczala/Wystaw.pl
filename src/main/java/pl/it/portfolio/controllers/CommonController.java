@@ -13,7 +13,7 @@ public class CommonController {
     public String main(Model model) {
        // model.addAttribute("books", this.bookService.getBooks());
       //  model.addAttribute("sessionObject", this.sessionObject);
-        return "proba";
+        return "main";
     }
     @RequestMapping(value = "/main", method = RequestMethod.POST)
     public String main2(@RequestBody String img) {
