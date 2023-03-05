@@ -19,12 +19,17 @@ import java.util.List;
 
 @Controller
 public class CommonController {
-    @RequestMapping(path = "/try", method = RequestMethod.GET)
-    public String sproboj() {
-        return "pomiedzy";
+    @RequestMapping(path = "/add", method = RequestMethod.GET)
+    public String addOffer() {
+        return "offeradd";
     }
 
-    @RequestMapping(path = "/try", method = RequestMethod.POST)
+    @RequestMapping(path = "/new", method = RequestMethod.GET)
+    public String nowy() {
+        return "new";
+    }
+
+    @RequestMapping(path = "/add", method = RequestMethod.POST)
     public String sproboj2(HttpServletRequest request) throws ServletException, IOException {
         System.out.println("przyszło");
 
