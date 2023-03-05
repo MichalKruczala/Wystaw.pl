@@ -9,7 +9,7 @@
 
 :root {
 	--purple: #794E7C;
-	--light-blue: #B6DBF6;
+	--light-purple: #794E7C;
 	--dark-purple: #44264A;
 	--grey: #f2f2f2;
 }
@@ -19,7 +19,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	background: var(--light-blue);
+	background: var(--light-purple);
 }
 
 

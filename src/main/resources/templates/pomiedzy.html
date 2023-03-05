@@ -1,32 +1,106 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="probny.css">
-    <link rel="stylesheet" href="common.css">
+    <style>
+
+    </style>
 
 
-    <title>Input Image With Preview Image</title>
+    <title>Dodaj Ofertę</title>
 </head>
+
 <body>
-<!--   działaaaa !!!!!!!!!!!!!!!!  -->
-<form action="/try" method="post" enctype="multipart/form-data">>
+
+<form action="/try" method="post" enctype="multipart/form-data">
     <div class="container">
         <input type="file" id="file" name="image" accept="image/*" hidden>
-        <div class="img-area" data-img="">  <!---->
+        <div class="img-area" data-img=""> <!---->
             <i class='bx bxs-cloud-upload icon'></i>
             <h3>Twoje zdjęcie</h3>
             <p>Załącznik powinien ważyć poniżej <span>2MB</span></p>
         </div>
-        <input class="select-image" style="color:red;" placeholder="Wybierz zdjęcie"><br>
-        <input type="submit" class="select-image" value="Zrób robote">
+        <input readonly="readonly" class="select-image" style="color:red;" placeholder="Wybierz zdjęcie" ><br>
+        <div>
+            <h3>Nazwa</h3>
+            <textarea cols="46" name="name"></textarea>
+        </div>
+        <div>
+            <h3>Wybierz Kategorię</h3>
+            <select name="category">
+                <option selected disabled hidden>kategorie</option>
+                <option value="fashion">Moda</option>
+                <option value="kid">Dziecko</option>
+                <option value="supermarket">Sumermarket</option>
+                <option value="houseAndGarden">Dom i ogród</option>
+                <option value="beauty">Uroda</option>
+                <option value="health">Zdrowie</option>
+                <option value="cultrureAndEntertainment">Kultura i rozrywka</option>
+                <option value="sportAndTurism">Sport i turystyka</option>
+                <option value="motorization">Motoryzacja</option>
+                <option value="property">Nieruchomości</option>
+                <option value="collectionsAndArt">Kolekcje i sztuka</option>
+                <option value="companyAndServices">Firma i usługi</option>
+            </select>
+        </div>
+        <div>
+            <h3>Sposoby Dostawy</h3>
+            <input type="radio" id="inpost" name="delivery" value="inpost">
+            <label for="inpost">Paczkomaty Inpost</label><br>
+            <input type="radio" id="courier" name="delivery" value="courier">
+            <label for="courier">Kurier</label><br>
+            <input type="radio" id="selfcollect" name="delivery" value="selfcollect">
+            <label for="selfcollect">Odbiór Własny</label><br>
+            <input type="radio" id="abroad" name="delivery" value="abroad">
+            <label for="abroad">Dostawa za granicę</label><br>
+        </div>
+        <div>
+            <h3>Stan</h3>
+            <input type="radio" id="new" name="state" value="new">
+            <label for="new">Nowe</label><br>
+            <input type="radio" id="used" name="state" value="used">
+            <label for="used">Używane</label><br>
+            <input type="radio" id="damaged" name="state" value="damaged">
+            <label for="damaged">Uszkodzone</label><br>
+        </div>
+        <div>
+            <h3>Lokalizacja</h3>
+            <select name="city">
+                <option selected disabled hidden>Wybierz lokalizację</option>
+                <option value="warszawa">Warszawa</option>
+                <option value="krakow">Kraków</option>
+                <option value="lodz">Łódź</option>
+                <option value="wroclaw">Wrocław</option>
+                <option value="poznan">Poznań</option>
+                <option value="gdansk">Gdańsk</option>
+                <option value="szczecin">Szczecin</option>
+                <option value="bydgoszcz">Bydgoszcz</option>
+                <option value="lublin">Lublin</option>
+                <option value="bualystok">Białystok</option>
+                <option value="katowice">Katowice</option>
+                <option value="gdynia">Gdynia</option>
+                <option value="czestochowa">Częstochowa</option>
+                <option value="radom">Radom</option>
+                <option value="rzeszow">Rzeszów</option>
+            </select>
+        </div>
+        <div class="features">
+            <h3> Cena</h3>
+            <input type='currency' name="prize" value="0.00" placeholder='Wprowadź cenę'/>
+        </div>
+        <br>
+        <input type="submit" class="select-image" value="Dodaj Ofertę">
 
 
     </div>
 </form>
 
 <script src="jpg.js"></script>
+<script src="inputCurrency.js"></script>
 </body>
+
 </html>

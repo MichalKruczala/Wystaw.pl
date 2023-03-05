@@ -22,9 +22,12 @@ public class Product {
     private State state;
     @Enumerated(EnumType.STRING)
     private Category category;
+    @Enumerated(EnumType.STRING)
+    private Delivety delivery;
 
-    public Product(int id, Set<Order> orders, String name, int prize,
+    public Product(int id, Delivety delivery, Set<Order> orders, String name, int prize,
                    int quantity, String description, Localization localization, State state, Category category) {
+        this.delivery=delivery;
         this.id = id;
         this.orders = orders;
         this.name = name;
@@ -75,6 +78,7 @@ public class Product {
     public void setLocalization(Localization localization) {
         this.localization = localization;
     }
+
     public void setPrize(int prize) {
         this.prize = prize;
     }
@@ -125,6 +129,11 @@ public class Product {
         RADOM,
         RZESZOW;
 
+    }
+    public enum Delivety {
+        INPOST,
+        ABROAD,
+        COURIER;
     }
 
     public enum State {

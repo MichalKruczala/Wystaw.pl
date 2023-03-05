@@ -16,9 +16,9 @@ import java.io.InputStream;
 import java.io.Serial;
 import java.sql.*;
 
-@MultipartConfig
+//@MultipartConfig
 
-@WebServlet("/AddImage")
+//@WebServlet("/AddImage")
 
 public class HinduskiKontroller extends HttpServlet {
     @Serial
