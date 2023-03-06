@@ -20,7 +20,7 @@
 <div th:fragment="panel">                                                <!-- panel ***  -->
     <div id="maincontainer">
 
-        <div id="leftcolumn"> <a href="/main"> <img src="logo2.png" height="51px"></a></div>
+        <div id="leftcolumn"><a href="/main" class="boxShadow"> <img src="logo2.png" height="51px"></a></div>
         <div id="rightcolumn">
             <form action="/listing">
                 <input placeholder="Czego szukasz?" style="height:46px;width:28%;font-size:15pt;" name="name"
@@ -46,9 +46,9 @@
         </div>
     </div>
 </div>
-<div th:fragment="userPanel">                                                        <!--  przycisk moje konto   -->
-    <div id="position" >
-        <button onclick="myFunction()" class="dropbtn">Moje Konto</button>
+<div th:fragment="userPanel">                                             <!--  przycisk moje konto   -->
+    <div id="position">
+        <a onclick="myFunction()"><img src="account.png" height="21px"  class="dropbtn"></a>
         <div id="myDropdown" class="dropdown-content">
             <a href="#about">Wystawione przedmioty</a>
             <a href="#about">Moje dane</a>
@@ -56,8 +56,10 @@
         </div>
     </div>
 </div>
-<div th:fragment="cartBtn"><a href="/cart" class="cartSign"><img src="cart.png"></a></div>    <!-- przycisk koszyk ***  -->
-<div th:fragment="addOfferBtn"><a href="/add" class="addSign"><img src="add.png"></a></div>    <!-- przycisk koszyk ***  -->
+<div th:fragment="cartBtn"><!-- przycisk koszyk ***  -->
+    <a href="/cart" class="cartSign"><img src="cart.png"></a></div>
+<div th:fragment="addOfferBtn">  <!-- przycisk dodaj ofertę ***  -->
+    <a href="/add" class="addSign"><img src="add.png"></a></div>
 
 <div th:fragment="leftPanel" class="leftPanel">                                          <!-- lewy panel ***  -->
     <form action="/action_page.php" oninput="x.value=parseInt(prize.value)">
@@ -132,12 +134,13 @@
             PLN<br>
         </div>
         <div>
-            <input type="reset" class="buttonsLeftPanel" value="Resetuj ">
-            <input type="submit" class="buttonsLeftPanel" id="rightButtonLeftPanel" placeholder="Szukaj ">
+            <input type="reset" class="niceBtn" value="Czyść Filtry">
+            <input type="submit" class="niceBtn" id="rightButtonLeftPanel" placeholder="Szukaj ">
         </div>
     </form>
 </div>
-<div th:fragment="rightPanel" id="rightSubContainer"><img id="fillDiv" src="reklama2.jpg" width="270px"></div>   <!-- right panel -->
+<div th:fragment="rightPanel" id="rightSubContainer"><img id="fillDiv" src="reklama2.jpg" width="270px"></div>
+<!-- right panel -->
 </body>
 
 </html>

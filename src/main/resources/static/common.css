@@ -6,10 +6,23 @@
 /* #44264A ciemnofioletowy
     #794E7C jasnofioletowy    */
 
+  :root {
+    	--purple: #794E7C;
+    	--light-purple: #E3AFF0;
+    	--dark-purple: #44264A;
+    	--grey: #f2f2f2;
+    	--light-grey: #E0E0E0;
+    }
+
 #position {
-    position: absolute;
-    top: 0px;
-    right: 0px;
+    position: absolute !important;
+  top: 182px !important;;
+      right: 293px !important;
+}
+#position2 {
+    position: absolute !important;
+  top: 182px !important;;
+      right: 293px !important;
 }
 
 
@@ -19,6 +32,7 @@
     background-color: #794E7C;
     color: white;
     cursor: pointer;
+    transition: all .3s ease;
 }
 
 #selectCategory:hover {
@@ -113,7 +127,7 @@ comercial {
     display: inline-block;
     position: absolute;
     top: 184px;
-    right: 260px;
+    right: 315px;
 
 }
 
@@ -137,3 +151,31 @@ comercial {
     width: 50%;
 }
 
+.niceBtn{
+	display: block;
+	width: 100%;
+	padding: 16px 0;
+	border-radius: 5px;
+	background-color:#916DA6;
+    text-align:center;
+
+	font-weight: 500;
+	font-size: 16px;
+	border: none;
+	cursor: grab;
+	transition: all .3s ease;
+}
+.niceBtn:hover {
+	background: var(--dark-purple);
+	box-shadow: 10px 19px 16px 0px rgba(0, 0, 0, 0.5);
+}
+.dropbtn{
+border:2px #794E7C;
+border-radius:5px;
+}
+.dropbtn:hover {
+transition: all .3s ease;
+}
+.boxShadow:hover{
+	box-shadow: 10px 19px 16px 0px rgba(0, 0, 0, 0.5);
+	}

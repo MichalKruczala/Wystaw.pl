@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Wystaw.pl</title>
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="userMenu.css">
-    <link rel="stylesheet" href="content.css">
+  <meta charset="UTF-8">
+  <title>Koszyk</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="userMenu.css">
+  <link rel="stylesheet" href="content.css">
 
-    <script src="/userMenu.js"></script>
-    <script src="/buttonOnTop.js"></script>
-    <style>
+  <script src="/userMenu.js"></script>
+  <script src="/buttonOnTop.js"></script>
+  <style>
         body{
 background-repeat: no-repeat;
 background-image: url("tlo.jpg");
 background-size: auto;
 margin: 0px;
 }
-/* przycisk do góry */
 #myBtn {
   display: none;
   position: fixed;
@@ -32,6 +31,7 @@ margin: 0px;
   border-radius: 2px;
   font-size: 30px;
 }
+
 #myBtn:hover {
   background-color: #44264A; /* ciemnofioletowy */
 }
@@ -40,27 +40,25 @@ margin: 0px;
 <body>
 <div th:replace="~{fragments.html::cartBtn}"></div>
 <div th:replace="~{fragments.html::addOfferBtn}"></div>
-
-
 <div th:replace="~{fragments.html::buttonOnTop}"></div>
 <div th:replace="~{fragments.html::adOnTop}"></div>
 <div th:replace="~{fragments.html::panel}"></div>
 <div th:replace="~{fragments.html::userPanel}"></div>
 
 <div id="contentContainer">
-    <div th:replace="~{fragments.html::leftPanel}" id="leftSubContainer"></div>
-    <div id="middleSubContainer">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        tu
-    </div>
-    <div th:replace="~{fragments.html::rightPanel}"></div>
+  <div th:replace="~{fragments.html::leftPanel}" id="leftSubContainer"></div>
+  <div id="middleSubContainer">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    tu
+  </div>
+  <div th:replace="~{fragments.html::rightPanel}"></div>
 </div>
 <script>
           <!--przycisk on top -->

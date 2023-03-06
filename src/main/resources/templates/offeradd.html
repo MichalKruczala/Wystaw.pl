@@ -7,8 +7,10 @@
     <!link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="addOffer.css">
     <link rel="stylesheet" href="userMenu.css">
+    <link rel="stylesheet" href="userMenu.css">
     <link rel="stylesheet" href="common.css">
     <script src="/buttonOnTop.js"></script>
+    <script src="/userMenu.js"></script>
     <title>Dodaj Ofertę</title>
     <style>
         #myBtn {
@@ -23,15 +25,15 @@
   color: white;
   cursor: pointer;
   padding: 15px;
-  border-radius: 2px;
+  border-radius: 5px;
   font-size: 30px;
 }
 #myBtn:hover {
   background-color: #44264A; /* ciemnofioletowy */
+
 }
     </style>
 </head>
-
 <body>
 <div th:replace="~{fragments.html::cartBtn}"></div>
 <div th:replace="~{fragments.html::buttonOnTop}"></div>
@@ -52,11 +54,11 @@
 
             <div>
                 <h3>Nazwa</h3>
-                <textarea cols="46" name="name"></textarea>
+                <textarea id="name" cols="46" name="name"></textarea>
             </div>
             <div>
                 <h3>Wybierz Kategorię</h3>
-                <select name="category">
+                <select id="category" name="category">
                     <option selected disabled hidden>kategorie</option>
                     <option value="fashion">Moda</option>
                     <option value="kid">Dziecko</option>
@@ -122,12 +124,10 @@
         </div>
     </form>
 </div>
-
 <script src="jpg.js"></script>
 <script src="inputCurrency.js"></script>
 <script>
           <!--przycisk on top -->
-
 let mybutton = document.getElementById("myBtn");
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {

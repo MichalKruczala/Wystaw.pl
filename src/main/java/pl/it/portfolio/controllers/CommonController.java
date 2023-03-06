@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Optional;
 
 @Controller
 public class CommonController {
@@ -21,9 +22,9 @@ public class CommonController {
         return "offeradd";
     }
 
-    @RequestMapping(path = "/new", method = RequestMethod.GET)
+    @RequestMapping(path = "/cart", method = RequestMethod.GET)
     public String nowy() {
-        return "new";
+        return "cart";
     }
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)
@@ -45,6 +46,7 @@ public class CommonController {
         //TODO ogarnąć to łądnie
         String uploadPath = "";
         try {
+
             Part file = request.getPart("image");
             String imageFileName = file.getSubmittedFileName();
             uploadPath = "C:/Users/Michał/IdeaProjects/Wystaw.pl/src/main/resources/static/uploadedPhotos/" + imageFileName;
