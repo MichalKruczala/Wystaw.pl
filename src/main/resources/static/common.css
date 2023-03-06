@@ -8,8 +8,8 @@
 
 #position {
     position: absolute;
-    top: 191px;
-    right: 10px;
+    top: 0px;
+    right: 0px;
 }
 
 
@@ -81,6 +81,7 @@ comercial {
     margin-top: 60px;
     margin-left: 80px;
     border: 1px solid grey;
+    border-radius:3px;
     width: 217px;
     background-color: rgba(170, 155, 179, 0.38);
     /* przezroczysysty fioletowy */
@@ -111,8 +112,8 @@ comercial {
     height: 50px;
     display: inline-block;
     position: absolute;
-    top: 191px;
-    right: 80px;
+    top: 184px;
+    right: 260px;
 
 }
 
@@ -120,3 +121,19 @@ comercial {
     height: 100%;
     width: 70%;
 }
+
+.addSign {
+    width: 6%;
+    height: 50px;
+    display: inline-block;
+    position: absolute;
+    top: 188px;
+    right: 190px;
+
+}
+
+.addSign img {
+    height: 80%;
+    width: 50%;
+}
+

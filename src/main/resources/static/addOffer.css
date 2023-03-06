@@ -9,17 +9,18 @@
 
 :root {
 	--purple: #794E7C;
-	--light-purple: #794E7C;
+	--light-purple: #E3AFF0;
 	--dark-purple: #44264A;
 	--grey: #f2f2f2;
+	--light-grey: #E0E0E0;
 }
 
 body {
-	display: flex;
+	display: block;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	background: var(--light-purple);
+	background: var(--light-grey);
 }
 
 
@@ -106,4 +107,10 @@ body {
 .select-image:hover {
 	background: var(--dark-purple);
 	box-shadow: 10px 19px 16px 0px rgba(0, 0, 0, 0.5);
+}
+#addform{
+margin-top:30px;
+display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
 }

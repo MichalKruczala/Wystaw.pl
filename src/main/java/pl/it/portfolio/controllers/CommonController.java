@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 
 @Controller
 public class CommonController {
@@ -32,7 +29,6 @@ public class CommonController {
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public String sproboj2(HttpServletRequest request) throws ServletException, IOException {
         System.out.println("przyszło");
-
 
 
         String name = Arrays.toString((request.getParameterValues("name"))).replaceAll("[^a-z\sA-Z0-9]", "");
@@ -68,7 +64,7 @@ public class CommonController {
         System.out.println(state);
         System.out.println(prize);
         System.out.println(uploadPath);
-        return "nic";
+        return "redirect:/main";
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)

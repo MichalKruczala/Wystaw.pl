@@ -19,12 +19,13 @@
 
 <div th:fragment="panel">                                                <!-- panel ***  -->
     <div id="maincontainer">
-        <div id="leftcolumn"><img src="logo2.png" height="51px"></div>
+
+        <div id="leftcolumn"> <a href="/main"> <img src="logo2.png" height="51px"></a></div>
         <div id="rightcolumn">
             <form action="/listing">
                 <input placeholder="Czego szukasz?" style="height:46px;width:28%;font-size:15pt;" name="name"
                        id="roll-input">
-                <select name="category" id="selectCategory" style="height:52px;width:19%;font-size:14pt;">
+                <select name="category" id="selectCategory" style="height:50px;width:19%;font-size:14pt;">
                     <option selected disabled hidden>Wybierz kategorię</option>
                     <option value="fashion">Moda</option>
                     <option value="kid">Dziecko</option>
@@ -46,7 +47,7 @@
     </div>
 </div>
 <div th:fragment="userPanel">                                                        <!--  przycisk moje konto   -->
-    <div class="dropdown" id="position">
+    <div id="position" >
         <button onclick="myFunction()" class="dropbtn">Moje Konto</button>
         <div id="myDropdown" class="dropdown-content">
             <a href="#about">Wystawione przedmioty</a>
@@ -55,7 +56,8 @@
         </div>
     </div>
 </div>
-<div th:fragment="cartBtn"><a href="/add" class="cartSign"><img src="cart.png"></a></div>    <!-- inny adres! ***  -->
+<div th:fragment="cartBtn"><a href="/cart" class="cartSign"><img src="cart.png"></a></div>    <!-- przycisk koszyk ***  -->
+<div th:fragment="addOfferBtn"><a href="/add" class="addSign"><img src="add.png"></a></div>    <!-- przycisk koszyk ***  -->
 
 <div th:fragment="leftPanel" class="leftPanel">                                          <!-- lewy panel ***  -->
     <form action="/action_page.php" oninput="x.value=parseInt(prize.value)">

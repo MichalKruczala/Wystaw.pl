@@ -1,100 +1,147 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="addOffer.css">
-
+    <link rel="stylesheet" href="userMenu.css">
+    <link rel="stylesheet" href="common.css">
+    <script src="/buttonOnTop.js"></script>
     <title>Dodaj Ofertę</title>
+    <style>
+        #myBtn {
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #794E7C;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 2px;
+  font-size: 30px;
+}
+#myBtn:hover {
+  background-color: #44264A; /* ciemnofioletowy */
+}
+    </style>
 </head>
 
 <body>
+<div th:replace="~{fragments.html::cartBtn}"></div>
+<div th:replace="~{fragments.html::buttonOnTop}"></div>
+<div th:replace="~{fragments.html::adOnTop}"></div>
+<div th:replace="~{fragments.html::panel}"></div>
+<div th:replace="~{fragments.html::userPanel}"></div>
 
-<form action="/add" method="post" enctype="multipart/form-data">
-    <div class="container">
-        <input type="file" id="file" name="image" accept="image/*" hidden>
-        <div class="img-area" data-img=""> <!---->
-            <i class='bx bxs-cloud-upload icon'></i>
-            <h3>Twoje zdjęcie</h3>
-            <p>Załącznik powinien ważyć poniżej <span>2MB</span></p>
+<div id="addform">
+    <form action="/add" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <input type="file" id="file" name="image" accept="image/*" hidden>
+            <div class="img-area" data-img=""> <!---->
+                <i class='bx bxs-cloud-upload icon'></i>
+                <h3>Twoje zdjęcie</h3>
+                <p>Załącznik powinien ważyć poniżej <span>2MB</span></p>
+            </div>
+            <input readonly="readonly" class="select-image" style="color:red;" placeholder="Wybierz zdjęcie"><br>
+
+            <div>
+                <h3>Nazwa</h3>
+                <textarea cols="46" name="name"></textarea>
+            </div>
+            <div>
+                <h3>Wybierz Kategorię</h3>
+                <select name="category">
+                    <option selected disabled hidden>kategorie</option>
+                    <option value="fashion">Moda</option>
+                    <option value="kid">Dziecko</option>
+                    <option value="supermarket">Sumermarket</option>
+                    <option value="houseAndGarden">Dom i ogród</option>
+                    <option value="beauty">Uroda</option>
+                    <option value="health">Zdrowie</option>
+                    <option value="cultrureAndEntertainment">Kultura i rozrywka</option>
+                    <option value="sportAndTurism">Sport i turystyka</option>
+                    <option value="motorization">Motoryzacja</option>
+                    <option value="property">Nieruchomości</option>
+                    <option value="collectionsAndArt">Kolekcje i sztuka</option>
+                    <option value="companyAndServices">Firma i usługi</option>
+                </select>
+            </div>
+            <div>
+                <h3>Sposoby Dostawy</h3>
+                <input type="radio" id="inpost" name="delivery" value="inpost">
+                <label for="inpost">Paczkomaty Inpost</label><br>
+                <input type="radio" id="courier" name="delivery" value="courier">
+                <label for="courier">Kurier</label><br>
+                <input type="radio" id="selfcollect" name="delivery" value="selfcollect">
+                <label for="selfcollect">Odbiór Własny</label><br>
+                <input type="radio" id="abroad" name="delivery" value="abroad">
+                <label for="abroad">Dostawa za granicę</label><br>
+            </div>
+            <div>
+                <h3>Stan</h3>
+                <input type="radio" id="new" name="state" value="new">
+                <label for="new">Nowe</label><br>
+                <input type="radio" id="used" name="state" value="used">
+                <label for="used">Używane</label><br>
+                <input type="radio" id="damaged" name="state" value="damaged">
+                <label for="damaged">Uszkodzone</label><br>
+            </div>
+            <div>
+                <h3>Lokalizacja</h3>
+                <select name="city">
+                    <option selected disabled hidden>Wybierz lokalizację</option>
+                    <option value="warszawa">Warszawa</option>
+                    <option value="krakow">Kraków</option>
+                    <option value="lodz">Łódź</option>
+                    <option value="wroclaw">Wrocław</option>
+                    <option value="poznan">Poznań</option>
+                    <option value="gdansk">Gdańsk</option>
+                    <option value="szczecin">Szczecin</option>
+                    <option value="bydgoszcz">Bydgoszcz</option>
+                    <option value="lublin">Lublin</option>
+                    <option value="bualystok">Białystok</option>
+                    <option value="katowice">Katowice</option>
+                    <option value="gdynia">Gdynia</option>
+                    <option value="czestochowa">Częstochowa</option>
+                    <option value="radom">Radom</option>
+                    <option value="rzeszow">Rzeszów</option>
+                </select>
+            </div>
+            <div class="features">
+                <h3> Cena</h3>
+                <input type='currency' name="prize" value="0.00" placeholder='Wprowadź cenę'/>
+            </div>
+            <br>
+            <input type="submit" class="select-image" value="Dodaj Ofertę">
         </div>
-        <input readonly="readonly" class="select-image" style="color:red;" placeholder="Wybierz zdjęcie" ><br>
-        <div>
-            <h3>Nazwa</h3>
-            <textarea cols="46" name="name"></textarea>
-        </div>
-        <div>
-            <h3>Wybierz Kategorię</h3>
-            <select name="category">
-                <option selected disabled hidden>kategorie</option>
-                <option value="fashion">Moda</option>
-                <option value="kid">Dziecko</option>
-                <option value="supermarket">Sumermarket</option>
-                <option value="houseAndGarden">Dom i ogród</option>
-                <option value="beauty">Uroda</option>
-                <option value="health">Zdrowie</option>
-                <option value="cultrureAndEntertainment">Kultura i rozrywka</option>
-                <option value="sportAndTurism">Sport i turystyka</option>
-                <option value="motorization">Motoryzacja</option>
-                <option value="property">Nieruchomości</option>
-                <option value="collectionsAndArt">Kolekcje i sztuka</option>
-                <option value="companyAndServices">Firma i usługi</option>
-            </select>
-        </div>
-        <div>
-            <h3>Sposoby Dostawy</h3>
-            <input type="radio" id="inpost" name="delivery" value="inpost">
-            <label for="inpost">Paczkomaty Inpost</label><br>
-            <input type="radio" id="courier" name="delivery" value="courier">
-            <label for="courier">Kurier</label><br>
-            <input type="radio" id="selfcollect" name="delivery" value="selfcollect">
-            <label for="selfcollect">Odbiór Własny</label><br>
-            <input type="radio" id="abroad" name="delivery" value="abroad">
-            <label for="abroad">Dostawa za granicę</label><br>
-        </div>
-        <div>
-            <h3>Stan</h3>
-            <input type="radio" id="new" name="state" value="new">
-            <label for="new">Nowe</label><br>
-            <input type="radio" id="used" name="state" value="used">
-            <label for="used">Używane</label><br>
-            <input type="radio" id="damaged" name="state" value="damaged">
-            <label for="damaged">Uszkodzone</label><br>
-        </div>
-        <div>
-            <h3>Lokalizacja</h3>
-            <select name="city">
-                <option selected disabled hidden>Wybierz lokalizację</option>
-                <option value="warszawa">Warszawa</option>
-                <option value="krakow">Kraków</option>
-                <option value="lodz">Łódź</option>
-                <option value="wroclaw">Wrocław</option>
-                <option value="poznan">Poznań</option>
-                <option value="gdansk">Gdańsk</option>
-                <option value="szczecin">Szczecin</option>
-                <option value="bydgoszcz">Bydgoszcz</option>
-                <option value="lublin">Lublin</option>
-                <option value="bualystok">Białystok</option>
-                <option value="katowice">Katowice</option>
-                <option value="gdynia">Gdynia</option>
-                <option value="czestochowa">Częstochowa</option>
-                <option value="radom">Radom</option>
-                <option value="rzeszow">Rzeszów</option>
-            </select>
-        </div>
-        <div class="features">
-            <h3> Cena</h3>
-            <input type='currency' name="prize" value="0.00" placeholder='Wprowadź cenę'/>
-        </div>
-        <br>
-        <input type="submit" class="select-image" value="Dodaj Ofertę">
-    </div>
-</form>
+    </form>
+</div>
 
 <script src="jpg.js"></script>
 <script src="inputCurrency.js"></script>
+<script>
+          <!--przycisk on top -->
+
+let mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+mybutton.style.display = "block";
+} else {
+mybutton.style.display = "none";
+}
+}
+function topFunction() {
+document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
+}
+</script>
 </body>
 
 </html>
