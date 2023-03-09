@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="addOffer.css">
-    <link rel="stylesheet" href="userMenu.css">
     <link rel="stylesheet" href="userMenu.css">
     <link rel="stylesheet" href="common.css">
     <script src="/buttonOnTop.js"></script>
@@ -32,6 +31,7 @@
   background-color: #44264A; /* ciemnofioletowy */
 
 }
+
     </style>
 </head>
 <body>
@@ -44,7 +44,7 @@
 <div id="addform">
     <form action="/add" method="post" enctype="multipart/form-data">
         <div class="container">
-            <input type="file" id="file" name="image" accept="image/*" hidden>
+            <input type="file" id="file" name="image" accept="image/*" hidden onchange="disableSubmitButton();">
             <div class="img-area" data-img=""> <!---->
                 <i class='bx bxs-cloud-upload icon'></i>
                 <h3>Twoje zdjęcie</h3>
@@ -54,11 +54,11 @@
 
             <div>
                 <h3>Nazwa</h3>
-                <textarea id="name" cols="46" name="name"></textarea>
+                <textarea id="name" cols="46" name="name" oninput="disableSubmitButton();"></textarea>
             </div>
             <div>
                 <h3>Wybierz Kategorię</h3>
-                <select id="category" name="category">
+                <select id="category" name="category" onchange="disableSubmitButton();">
                     <option selected disabled hidden>kategorie</option>
                     <option value="fashion">Moda</option>
                     <option value="kid">Dziecko</option>
@@ -76,27 +76,27 @@
             </div>
             <div>
                 <h3>Sposoby Dostawy</h3>
-                <input type="radio" id="inpost" name="delivery" value="inpost">
+                <input type="radio" id="inpost" name="delivery" value="inpost" onchange="disableSubmitButton();">
                 <label for="inpost">Paczkomaty Inpost</label><br>
-                <input type="radio" id="courier" name="delivery" value="courier">
+                <input type="radio" id="courier" name="delivery" value="courier" onchange="disableSubmitButton();">
                 <label for="courier">Kurier</label><br>
-                <input type="radio" id="selfcollect" name="delivery" value="selfcollect">
+                <input type="radio" id="selfcollect" name="delivery" value="selfcollect" onchange="disableSubmitButton();">
                 <label for="selfcollect">Odbiór Własny</label><br>
-                <input type="radio" id="abroad" name="delivery" value="abroad">
+                <input type="radio" id="abroad" name="delivery" value="abroad" onchange="disableSubmitButton();">
                 <label for="abroad">Dostawa za granicę</label><br>
             </div>
             <div>
                 <h3>Stan</h3>
-                <input type="radio" id="new" name="state" value="new">
+                <input type="radio" id="new" name="state" value="new" onchange="disableSubmitButton();">
                 <label for="new">Nowe</label><br>
-                <input type="radio" id="used" name="state" value="used">
+                <input type="radio" id="used" name="state" value="used" onchange="disableSubmitButton();">
                 <label for="used">Używane</label><br>
-                <input type="radio" id="damaged" name="state" value="damaged">
+                <input type="radio" id="damaged" name="state" value="damaged" onchange="disableSubmitButton();">
                 <label for="damaged">Uszkodzone</label><br>
             </div>
             <div>
                 <h3>Lokalizacja</h3>
-                <select name="city">
+                <select name="city" onchange="disableSubmitButton();">
                     <option selected disabled hidden>Wybierz lokalizację</option>
                     <option value="warszawa">Warszawa</option>
                     <option value="krakow">Kraków</option>
@@ -117,16 +117,37 @@
             </div>
             <div class="features">
                 <h3> Cena</h3>
-                <input type='currency' name="prize" value="0.00" placeholder='Wprowadź cenę'/>
+
             </div>
             <br>
-            <input type="submit" class="select-image" value="Dodaj Ofertę">
+            <input type="submit"  style="color:blue;" class="select-image" value="Dodaj Ofertę" disabled>
         </div>
     </form>
 </div>
 <script src="jpg.js"></script>
 <script src="inputCurrency.js"></script>
+
 <script>
+		function disableSubmitButton() {
+			var form = document.querySelector('form');
+			var inputs = form.querySelectorAll('input, select, textarea');
+			var submitButton = form.querySelector('input[type="submit"]');
+			var isComplete = true;
+			for (var i = 0; i < inputs.length; i++) {
+				if (inputs[i].value.trim() === '') {
+					isComplete = false;
+					break;
+				}
+			}
+			if (isComplete) {
+				submitButton.disabled = false;
+			} else {
+				submitButton.disabled = true;
+			}
+		}
+
+
+
           <!--przycisk on top -->
 let mybutton = document.getElementById("myBtn");
 window.onscroll = function() {scrollFunction()};
@@ -141,6 +162,7 @@ function topFunction() {
 document.body.scrollTop = 0;
 document.documentElement.scrollTop = 0;
 }
+
 </script>
 </body>
 

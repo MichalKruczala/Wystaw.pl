@@ -24,7 +24,7 @@ public class CommonController {
 
     @RequestMapping(path = "/cart", method = RequestMethod.GET)
     public String nowy() {
-        return "cart";
+        return "main";
     }
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)
@@ -73,7 +73,7 @@ public class CommonController {
     public String main(Model model) {
         // model.addAttribute("books", this.bookService.getBooks());
         //  model.addAttribute("sessionObject", this.sessionObject);
-        return "main";
+        return "dawaj";
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.POST)
