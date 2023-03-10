@@ -1,13 +1,14 @@
 package pl.it.portfolio.model;
 
 import jakarta.persistence.*;
+import pl.it.portfolio.model.interfaces.Saveable;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
 @Entity(name = "torder")
-public class Order {
+public class Order implements Saveable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -15,10 +16,14 @@ public class Order {
     private List<OrderPosition> orderPosition = new LinkedList<>();
     @ManyToOne
     User user;
+    private Status state;
+    private int total;
+    private LocalDateTime date;
+
 
     public Order(int id, List<OrderPosition> orderPosition, User user, Status state, int total, LocalDateTime date) {
         this.id = id;
-        this.orderPosition =orderPosition;
+        this.orderPosition = orderPosition;
         this.user = user;
         this.state = state;
         this.total = total;
@@ -27,6 +32,7 @@ public class Order {
 
     public Order() {
     }
+
     public int getId() {
         return id;
     }
@@ -75,9 +81,6 @@ public class Order {
         this.date = date;
     }
 
-    private Status state;
-    private int total;
-    private LocalDateTime date;
 
     public enum Status {
         NEW,

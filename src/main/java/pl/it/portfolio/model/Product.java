@@ -1,12 +1,13 @@
 package pl.it.portfolio.model;
 
 import jakarta.persistence.*;
+import pl.it.portfolio.model.interfaces.Saveable;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "tproduct")
-public class Product {
+public class Product implements Saveable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -24,10 +25,11 @@ public class Product {
     private Category category;
     @Enumerated(EnumType.STRING)
     private Delivety delivery;
+    private String photoUrl;
 
     public Product(int id, Delivety delivery, Set<Order> orders, String name, int prize,
-                   int quantity, String description, Localization localization, State state, Category category) {
-        this.delivery=delivery;
+                   int quantity, String description, Localization localization, State state, String photoUrl, Category category) {
+        this.delivery = delivery;
         this.id = id;
         this.orders = orders;
         this.name = name;
@@ -37,6 +39,7 @@ public class Product {
         this.description = description;
         this.state = state;
         this.category = category;
+        this.photoUrl = photoUrl;
     }
 
 
@@ -115,6 +118,22 @@ public class Product {
         this.category = category;
     }
 
+    public Delivety getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(Delivety delivery) {
+        this.delivery = delivery;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
     public enum Localization {
         WARSZAWA,
         KRAKOW,
@@ -130,6 +149,7 @@ public class Product {
         RZESZOW;
 
     }
+
     public enum Delivety {
         INPOST,
         ABROAD,

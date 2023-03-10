@@ -17,15 +17,32 @@ import java.util.Optional;
 
 @Controller
 public class CommonController {
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public String main2() {
+        return "main";
+    }
+
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
+    public String main(Model model) {
+        // model.addAttribute("books", this.bookService.getBooks());
+        //  model.addAttribute("sessionObject", this.sessionObject);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/main", method = RequestMethod.POST)
+    public String main2(@RequestBody String img) {
+
+        // model.addAttribute("books", this.bookService.getBooks());
+        //  model.addAttribute("sessionObject", this.sessionObject);
+        return "main";
+    }
+
+
     @RequestMapping(path = "/add", method = RequestMethod.GET)
     public String addOffer() {
         return "offeradd";
     }
 
-    @RequestMapping(path = "/cart", method = RequestMethod.GET)
-    public String nowy() {
-        return "main";
-    }
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public String sproboj2(HttpServletRequest request) throws ServletException, IOException {
@@ -39,9 +56,9 @@ public class CommonController {
         String city = Arrays.toString(request.getParameterValues("city")).replaceAll("[^a-zA-Z0-9]", "");
 
 
-        Double prize= Double.valueOf(Arrays.toString(request.getParameterValues("prize")).
+        Double prize = Double.valueOf(Arrays.toString(request.getParameterValues("prize")).
                 replaceAll("[^\\d,]+", "").
-                replace(",","."));
+                replace(",", "."));
 
         //TODO ogarnąć to łądnie
         String uploadPath = "";
@@ -68,20 +85,6 @@ public class CommonController {
         System.out.println(uploadPath);
         return "redirect:/main";
     }
-
-    @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String main(Model model) {
-        // model.addAttribute("books", this.bookService.getBooks());
-        //  model.addAttribute("sessionObject", this.sessionObject);
-        return "dawaj";
-    }
-
-    @RequestMapping(value = "/main", method = RequestMethod.POST)
-    public String main2(@RequestBody String img) {
-
-        // model.addAttribute("books", this.bookService.getBooks());
-        //  model.addAttribute("sessionObject", this.sessionObject);
-        return "main";
-    }
-
 }
+
+

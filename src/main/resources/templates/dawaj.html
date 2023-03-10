@@ -6,7 +6,7 @@
 	<script>
 		function disableSubmitButton() {
 			var form = document.querySelector('form');
-			var inputs = form.querySelectorAll('input, select, textarea');
+			var inputs = form.querySelectorAll('select, textarea');
 			var submitButton = form.querySelector('input[type="submit"]');
 			var isComplete = true;
 			for (var i = 0; i < inputs.length; i++) {
@@ -25,12 +25,6 @@
 </head>
 <body>
 <form>
-	<label for="name">Name:</label>
-	<input type="text" id="name" name="name" oninput="disableSubmitButton();"><br>
-
-	<label for="email">Email:</label>
-	<input type="email" id="email" name="email" oninput="disableSubmitButton();"><br>
-
 	<label for="file">File:</label>
 	<input type="file" id="file" name="file" onchange="disableSubmitButton();"><br>
 
@@ -46,6 +40,20 @@
 		<option value="eur">EUR</option>
 		<option value="gbp">GBP</option>
 	</select><br>
+		<label>Group 1:</label><br>
+		<label><input type="radio" name="group1" value="option1" onchange="disableSubmitButton();">Option 1</label><br>
+		<label><input type="radio" name="group1" value="option2" onchange="disableSubmitButton();">Option 2</label><br>
+		<label><input type="radio" name="group1" value="option3" onchange="disableSubmitButton();">Option 3</label><br>
+
+		<label>Group 2:</label><br>
+		<label><input type="radio" name="group2" value="option1" onchange="disableSubmitButton();">Option 1</label><br>
+		<label><input type="radio" name="group2" value="option2" onchange="disableSubmitButton();">Option 2</label><br>
+		<label><input type="radio" name="group2" value="option3" onchange="disableSubmitButton();">Option 3</label><br>
+
+		<label>Group 3:</label><br>
+		<label><input type="radio" name="group3" value="option1" onchange="disableSubmitButton();">Option 1</label><br>
+		<label><input type="radio" name="group3" value="option2" onchange="disableSubmitButton();">Option 2</label><br>
+		<label><input type="radio" name="group3" value="option3" onchange="disableSubmitButton();">Option 3</label><br>
 
 	<textarea id="message" name="message" oninput="disableSubmitButton();"></textarea><br>
 

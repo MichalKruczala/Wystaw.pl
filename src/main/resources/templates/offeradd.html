@@ -32,6 +32,7 @@
 
 }
 
+
     </style>
 </head>
 <body>
@@ -44,7 +45,7 @@
 <div id="addform">
     <form action="/add" method="post" enctype="multipart/form-data">
         <div class="container">
-            <input type="file" id="file" name="image" accept="image/*" hidden onchange="disableSubmitButton();">
+            <input type="file" id="file" name="image" accept="image/*" hidden>
             <div class="img-area" data-img=""> <!---->
                 <i class='bx bxs-cloud-upload icon'></i>
                 <h3>Twoje zdjęcie</h3>
@@ -58,7 +59,7 @@
             </div>
             <div>
                 <h3>Wybierz Kategorię</h3>
-                <select id="category" name="category" onchange="disableSubmitButton();">
+                <select id="category" name="category">
                     <option selected disabled hidden>kategorie</option>
                     <option value="fashion">Moda</option>
                     <option value="kid">Dziecko</option>
@@ -76,27 +77,27 @@
             </div>
             <div>
                 <h3>Sposoby Dostawy</h3>
-                <input type="radio" id="inpost" name="delivery" value="inpost" onchange="disableSubmitButton();">
+                <input type="radio" id="inpost" name="delivery" value="inpost">
                 <label for="inpost">Paczkomaty Inpost</label><br>
-                <input type="radio" id="courier" name="delivery" value="courier" onchange="disableSubmitButton();">
+                <input type="radio" id="courier" name="delivery" value="courier">
                 <label for="courier">Kurier</label><br>
-                <input type="radio" id="selfcollect" name="delivery" value="selfcollect" onchange="disableSubmitButton();">
+                <input type="radio" id="selfcollect" name="delivery" value="selfcollect">
                 <label for="selfcollect">Odbiór Własny</label><br>
-                <input type="radio" id="abroad" name="delivery" value="abroad" onchange="disableSubmitButton();">
+                <input type="radio" id="abroad" name="delivery" value="abroad">
                 <label for="abroad">Dostawa za granicę</label><br>
             </div>
             <div>
                 <h3>Stan</h3>
-                <input type="radio" id="new" name="state" value="new" onchange="disableSubmitButton();">
+                <input type="radio" id="new" name="state" value="new">
                 <label for="new">Nowe</label><br>
-                <input type="radio" id="used" name="state" value="used" onchange="disableSubmitButton();">
+                <input type="radio" id="used" name="state" value="used">
                 <label for="used">Używane</label><br>
-                <input type="radio" id="damaged" name="state" value="damaged" onchange="disableSubmitButton();">
+                <input type="radio" id="damaged" name="state" value="damaged">
                 <label for="damaged">Uszkodzone</label><br>
             </div>
             <div>
                 <h3>Lokalizacja</h3>
-                <select name="city" onchange="disableSubmitButton();">
+                <select name="city">
                     <option selected disabled hidden>Wybierz lokalizację</option>
                     <option value="warszawa">Warszawa</option>
                     <option value="krakow">Kraków</option>
@@ -117,38 +118,18 @@
             </div>
             <div class="features">
                 <h3> Cena</h3>
-
+                <input type='currency' name="prize" value="0.00" placeholder='Wprowadź cenę'>
             </div>
             <br>
-            <input type="submit"  style="color:blue;" class="select-image" value="Dodaj Ofertę" disabled>
+            <input type="submit" class="select-image" value="Dodaj Ofertę">
         </div>
     </form>
 </div>
 <script src="jpg.js"></script>
 <script src="inputCurrency.js"></script>
-
 <script>
-		function disableSubmitButton() {
-			var form = document.querySelector('form');
-			var inputs = form.querySelectorAll('input, select, textarea');
-			var submitButton = form.querySelector('input[type="submit"]');
-			var isComplete = true;
-			for (var i = 0; i < inputs.length; i++) {
-				if (inputs[i].value.trim() === '') {
-					isComplete = false;
-					break;
-				}
-			}
-			if (isComplete) {
-				submitButton.disabled = false;
-			} else {
-				submitButton.disabled = true;
-			}
-		}
 
-
-
-          <!--przycisk on top -->
+<!--       przycisk on top-->
 let mybutton = document.getElementById("myBtn");
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {

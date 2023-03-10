@@ -1,9 +1,10 @@
 package pl.it.portfolio.model;
 
 import jakarta.persistence.*;
+import pl.it.portfolio.model.interfaces.Saveable;
 
 @Entity
-public class OrderPosition {
+public class OrderPosition implements Saveable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -15,6 +16,10 @@ public class OrderPosition {
         this.id = id;
         this.product = product;
         this.quantity = quantity;
+    }
+    public OrderPosition(Product product,int quantity){
+        this.product=product;
+        this.quantity=quantity;
     }
 
     public OrderPosition() {
