@@ -8,17 +8,14 @@ import java.util.Optional;
 public interface IProductDAO {
     List<Product> getProductsForMainWebSite();
 
-//    List<Product> getProductsByName(String name);
-//    List<Product> getProductsByNameAndCategory(String name, String category);
-//    List<Product> getProductsByName(String name);
-//    List<Product> getProductsByName(String name);
-//    List<Product> getProductsByName(String name);
-//    List<Product> getProductsByName(String name);
+    List<Product> getProductsByParams(String name, String category, String delivery, String state, String localization, Double prize);
 
-    void persistBook(Product book);
+    void persistProduct(Product product);
 
-    Optional<Product> getBookById(int id);
+    List<Product> getProductById(int id);
 
-    void updateBook(Product book);
+    void updateProduct(Product product);
+
+    void deleteProduct(Product id);
 }
 

@@ -3,10 +3,12 @@ package pl.it.portfolio.controllers;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.Part;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.it.portfolio.DB.interfaces.IProductDAO;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,22 +19,25 @@ import java.util.Arrays;
 
 @Controller
 public class ListngController {
+    @Autowired
+
 
     @RequestMapping(path = "/listing", method = RequestMethod.GET)
     public String listing(@RequestParam(required = false) String name, @RequestParam(required = false) String category,
                           @RequestParam(required = false) String delivery,@RequestParam(required = false) String state,
                           @RequestParam(required = false) String localization,@RequestParam(required = false) Double prize){
-        System.out.println(name);
-        System.out.println(category);
-        System.out.println(delivery);
-        System.out.println(state);
-        System.out.println(localization);
-        if(prize==null){
-            System.out.println("NIE MA CENY");
-        }else {
-            System.out.println(prize);
-        }
-        System.out.println("*****************");
+
+//        System.out.println(name);
+//        System.out.println(category);
+//        System.out.println(delivery);
+//        System.out.println(state);
+//        System.out.println(localization);
+//        if(prize==null){
+//            System.out.println("NIE MA CENY");
+//        }else {
+//            System.out.println(prize);
+//        }
+//        System.out.println("*****************");
         //TODO do modelu wrzucic ogloszenia ( szukane po name lub po name i ccategory
         return "main";
     }
