@@ -8,6 +8,7 @@ import pl.it.portfolio.DB.interfaces.IUserDAO;
 import pl.it.portfolio.exceptions.UserLoginExistException;
 import pl.it.portfolio.model.User;
 import pl.it.portfolio.services.interfaces.IAuthencitationService;
+import pl.it.portfolio.session.SessionObject;
 
 import java.util.Optional;
 

@@ -50,9 +50,10 @@
     <div id="position">
         <a onclick="myFunction()"><img src="account.png" height="21px"  class="dropbtn"></a>
         <div id="myDropdown" class="dropdown-content">
+            <a href="/login">Zaloguj</a>
             <a href="#about">Wystawione przedmioty</a>
             <a href="#about">Moje dane</a>
-            <a href="#home">Wyloguj</a>
+            <a href="/logout">Wyloguj</a>
         </div>
     </div>
 </div>
@@ -62,7 +63,7 @@
     <a href="/add" class="addSign"><img src="add.png"></a></div>
 
 <div th:fragment="leftPanel" class="leftPanel">                                          <!-- lewy panel ***  -->
-    <form action="/action_page.php" oninput="x.value=parseInt(prize.value)">
+    <form action="/listing" oninput="x.value=parseInt(prize.value)">
         <div class="featuresAlignCenter">
             <h2>&nbsp;Przeglądaj Oferty&nbsp;</h2>
         </div>
@@ -139,8 +140,8 @@
         </div>
     </form>
 </div>
-<div th:fragment="rightPanel" id="rightSubContainer"><img id="fillDiv" src="reklama2.jpg" width="270px"></div>
-<!-- right panel -->
+<div th:fragment="rightPanel" id="rightSubContainer"><img id="fillDiv" src="reklama2.jpg" width="270px"> <!-- right panel -->  </div>
+
 </body>
 
 </html>

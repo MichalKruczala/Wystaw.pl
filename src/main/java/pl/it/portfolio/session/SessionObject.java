@@ -1,4 +1,4 @@
-package pl.it.portfolio.services;
+package pl.it.portfolio.session;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
