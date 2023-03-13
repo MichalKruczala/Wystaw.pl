@@ -19,10 +19,9 @@
 
 <div th:fragment="panel">                                                <!-- panel ***  -->
     <div id="maincontainer">
-
         <div id="leftcolumn"><a href="/main" class="boxShadow"> <img src="logo2.png" height="51px"></a></div>
         <div id="rightcolumn">
-            <form action="/listing">
+            <form action="/listing" method="get">
                 <input placeholder="Czego szukasz?" style="height:46px;width:28%;font-size:15pt;" name="name"
                        id="roll-input">
                 <select name="category" id="selectCategory" style="height:50px;width:19%;font-size:14pt;">
@@ -63,7 +62,7 @@
     <a href="/add" class="addSign"><img src="add.png"></a></div>
 
 <div th:fragment="leftPanel" class="leftPanel">                                          <!-- lewy panel ***  -->
-    <form action="/listing" oninput="x.value=parseInt(prize.value)">
+    <form action="/listing" method="get" oninput="x.value=parseInt(prize.value)">
         <div class="featuresAlignCenter">
             <h2>&nbsp;Przeglądaj Oferty&nbsp;</h2>
         </div>

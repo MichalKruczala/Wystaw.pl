@@ -31,8 +31,6 @@
   background-color: #44264A; /* ciemnofioletowy */
 
 }
-
-
     </style>
 </head>
 <body>
@@ -51,14 +49,14 @@
                 <h3>Twoje zdjęcie</h3>
                 <p>Załącznik powinien ważyć poniżej <span>2MB</span></p>
             </div>
-            <input readonly="readonly" class="select-image" style="color:red;" placeholder="Wybierz zdjęcie"><br>
+            <input readonly="readonly" class="select-image" style="color:red;" placeholder="Wybierz zdjęcie(opcjonalnie)"><br>
 
             <div>
                 <h3>Nazwa</h3>
                 <textarea id="name" cols="46" name="name" oninput="disableSubmitButton();"></textarea>
             </div>
             <div>
-                <h3>Wybierz Kategorię</h3>
+                <h3>Wybierz Kategorię*</h3>
                 <select id="category" name="category">
                     <option selected disabled hidden>kategorie</option>
                     <option value="fashion">Moda</option>
@@ -76,7 +74,7 @@
                 </select>
             </div>
             <div>
-                <h3>Sposoby Dostawy</h3>
+                <h3>Sposoby Dostawy*</h3>
                 <input type="radio" id="inpost" name="delivery" value="inpost">
                 <label for="inpost">Paczkomaty Inpost</label><br>
                 <input type="radio" id="courier" name="delivery" value="courier">
@@ -87,7 +85,7 @@
                 <label for="abroad">Dostawa za granicę</label><br>
             </div>
             <div>
-                <h3>Stan</h3>
+                <h3>Stan*</h3>
                 <input type="radio" id="new" name="state" value="new">
                 <label for="new">Nowe</label><br>
                 <input type="radio" id="used" name="state" value="used">
@@ -96,7 +94,7 @@
                 <label for="damaged">Uszkodzone</label><br>
             </div>
             <div>
-                <h3>Lokalizacja</h3>
+                <h3>Lokalizacja*</h3>
                 <select name="city">
                     <option selected disabled hidden>Wybierz lokalizację</option>
                     <option value="warszawa">Warszawa</option>
@@ -117,7 +115,7 @@
                 </select>
             </div>
             <div class="features">
-                <h3> Cena</h3>
+                <h3> Cena*</h3>
                 <input type='currency' name="prize" value="0.00" placeholder='Wprowadź cenę'>
             </div>
             <br>

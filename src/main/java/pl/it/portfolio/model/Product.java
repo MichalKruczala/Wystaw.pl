@@ -14,7 +14,7 @@ public class Product implements Saveable {
     @ManyToMany
     private Set<Order> orders = new HashSet<>();
     private String name;
-    private int prize;
+    private double prize;
     private int quantity;
     private String description;
     @Enumerated(EnumType.STRING)
@@ -27,7 +27,7 @@ public class Product implements Saveable {
     private Delivety delivery;
     private String photoUrl;
 
-    public Product(int id, Delivety delivery, Set<Order> orders, String name, int prize,
+    public Product(int id, Delivety delivery, Set<Order> orders, String name, double prize,
                    int quantity, String description, Localization localization, State state, String photoUrl, Category category) {
         this.delivery = delivery;
         this.id = id;
@@ -70,9 +70,6 @@ public class Product implements Saveable {
         this.name = name;
     }
 
-    public int getPrize() {
-        return prize;
-    }
 
     public Localization getLocalization() {
         return localization;
@@ -82,7 +79,12 @@ public class Product implements Saveable {
         this.localization = localization;
     }
 
-    public void setPrize(int prize) {
+
+    public double getPrize() {
+        return prize;
+    }
+
+    public void setPrize(double prize) {
         this.prize = prize;
     }
 

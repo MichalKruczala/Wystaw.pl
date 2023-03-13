@@ -32,6 +32,7 @@ public class ProductDAO extends EntityManager implements IProductDAO {
         Query<Product> query = session.createQuery(
                 createQuery(name, category, delivery, state, localization, prize),
                 Product.class);
+        System.out.println(createQuery(name, category, delivery, state, localization, prize));
         setQueryParameters(query, name, category, delivery, state, localization, prize);
         List<Product> productList = query.getResultList();
         session.close();
@@ -43,7 +44,10 @@ public class ProductDAO extends EntityManager implements IProductDAO {
         super.persist(product);
     }
 
-
+    @Override
+    public Optional<Product> getProductById(int id) {
+        return Optional.empty();
+    }
 
 
     @Override

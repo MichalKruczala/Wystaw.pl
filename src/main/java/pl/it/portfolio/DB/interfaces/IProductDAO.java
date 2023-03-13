@@ -12,7 +12,7 @@ public interface IProductDAO {
 
     void persistProduct(Product product);
 
-    List<Product> getProductById(int id);
+    Optional<Product> getProductById(int id);
 
     void updateProduct(Product product);
 
