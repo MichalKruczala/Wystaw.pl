@@ -64,16 +64,15 @@ public class ProductDAO extends EntityManager implements IProductDAO {
 
     @Override
     public List<Product> listProductsByParams(String name, String category, String delivery, String state, String localization, Double prize) {
-        //  Session session = this.sessionFactory.openSession();
-        //  Query<Product> query = session.createQuery(
-        //        createQuery(name, category, delivery, state, localization, prize),
-        //      Product.class);
+      //  Session session = this.sessionFactory.openSession();
+     //   Query<Product> query = session.createQuery(
+         //       createQuery(name, category, delivery, state, localization, prize),
+         //       Product.class);
         System.out.println(createQuery(name, category, delivery, state, localization, prize));
-        //   setQueryParameters(query, name, category, delivery, state, localization, prize);
-        //    List<Product> productList = query.getResultList();
-        //    session.close();
-        //    return productList;
-        return new ArrayList<>();
+       // setQueryParameters(query, name, category, delivery, state, localization, prize);
+      //  List<Product> productList = query.getResultList();
+      //  session.close();
+        return null;// productList;
     }
 
     @Override
@@ -94,11 +93,10 @@ public class ProductDAO extends EntityManager implements IProductDAO {
 
     @Override
     public void deleteProduct(Product id) {
-
     }
 
     public String createQuery(String name, String category, String delivery, String state, String localization, Double prize) {
-        StringBuilder queryString = new StringBuilder("FROM pl.it.portfolio.model WHERE ");
+        StringBuilder queryString = new StringBuilder("FROM pl.it.portfolio.model.Product WHERE ");
         Map<String, String> params = new HashMap<>();
 
         params.put("name", (name == null) ? "" : name);
@@ -116,46 +114,46 @@ public class ProductDAO extends EntityManager implements IProductDAO {
                     if (param.getKey().equals("prize")) {
                         queryString.append("prize BETWEEN :startPrize AND :endPrize");
                     }
-                    if (!param.getKey().equals("prize")) {
+                    if (!param.getKey().equals("prize") && !param.getKey().equals("name")) {
                         queryString.append(param.getKey()).append(" = :").append(param.getKey());
                     }
+                    if (param.getKey().equals("name")) {
+                        queryString.append("name LIKE :name");
+                    }
                 } else {
-                    if (!param.getKey().equals("prize")) {
-                        queryString.append(" AND ").append(param.getKey()).append(" :").append(param.getKey());
+                    if (!param.getKey().equals("prize") && !param.getKey().equals("name")) {
+                        queryString.append(" AND ").append(param.getKey()).append(" = :").append(param.getKey());
                     } else {
                         queryString.append(" AND prize BETWEEN :startPrize AND :endPrize");
                     }
                 }
             }
         }
-        return queryString.append(";").toString();
+        return queryString.toString();
     }
 
     public void setQueryParameters(Query<Product> query, String name, String category, String delivery, String state,
                                    String localization, Double prize) {
         Map<String, String> params = new HashMap<>();
-        params.put("name", name);
-        params.put("category", category);
-        params.put("delivery", delivery);
-        params.put("state", state);
-        params.put("localization", localization);
-        params.put("prize", String.valueOf(prize));
+        params.put("name", (name == null) ? "" : name);
+        params.put("category", (category == null) ? "" : category);
+        params.put("delivery", (delivery == null) ? "" : delivery);
+        params.put("state", (state == null) ? "" : state);
+        params.put("localization", (localization == null) ? "" : localization);
+        params.put("prize", (prize == null) ? "" : String.valueOf(prize));
+
         for (Map.Entry<String, String> param : params.entrySet()) {
-            if (!param.getValue().equals("null")) {
-                query.setParameter(param.getKey(), param.getValue());
+            if (!param.getValue().equals("")) {
+                if (param.getKey().equals("prize")) {
+                    query.setParameter("startPrize", "0");
+                    query.setParameter("endPrize", String.valueOf(prize));
+                }
+                if (param.getKey().equals("name")) {
+                    query.setParameter("name", "%" + name + "%");
+                } else {
+                    query.setParameter(param.getKey(),param.getValue());
+                }
             }
         }
     }
 }
-
-//    Session session = this.sessionFactory.openSession();
-//    Query<Product> query = session.createQuery(
-//            "FROM pl.it.portfolio.model.Product WHERE id = :id",
-//            Product.class);
-//        query.setParameter("id", id);
-//                Optional<Product> result = Optional.empty();
-//        try {
-//        result = Optional.of(query.getSingleResult());
-//        } catch (NoResultException e) {}
-//        session.close();
-//        return result;

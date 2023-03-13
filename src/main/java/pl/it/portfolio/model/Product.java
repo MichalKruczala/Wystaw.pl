@@ -155,7 +155,8 @@ public class Product implements Saveable {
     public enum Delivety {
         INPOST,
         ABROAD,
-        COURIER;
+        COURIER,
+        SELFCOLlECT;
     }
 
     public enum State {
