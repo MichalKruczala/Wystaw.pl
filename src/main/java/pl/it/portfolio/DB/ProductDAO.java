@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import pl.it.portfolio.DB.interfaces.IProductDAO;
+import pl.it.portfolio.model.Order;
 import pl.it.portfolio.model.Product;
 
 import java.io.FileOutputStream;
@@ -25,21 +26,37 @@ public class ProductDAO extends EntityManager implements IProductDAO {
 
     @Override
     public List<Product> listProductsForMainWebSite() {
-        return null;
-        //TODO dokończyć
+        Session session = this.sessionFactory.openSession();
+        Query<Product> query = session.createQuery(
+                "FROM pl.it.portfolio.model.Product WHERE id BETWEEN :startId AND :endId",
+                Product.class
+        );
+        query.setParameter("startId", 1);
+        query.setParameter("endId", 10);
+
+        List<Product> products = query.getResultList();
+        session.close();
+        return products;
     }
 
     @Override
     public void addProduct(HttpServletRequest request) {
+
         String name = Arrays.toString((request.getParameterValues("name"))).replaceAll("[^a-z\sA-Z0-9]", "");
-        String category = Arrays.toString(request.getParameterValues("category")).replaceAll("[^a-zA-Z0-9]", "");
-        String delivery = Arrays.toString(request.getParameterValues("delivery")).replaceAll("[^a-zA-Z0-9]", "");
-        String state = Arrays.toString(request.getParameterValues("state")).replaceAll("[^a-zA-Z0-9]", "");
-        String city = Arrays.toString(request.getParameterValues("city")).replaceAll("[^a-zA-Z0-9]", "");
-        Double prize = Double.valueOf(Arrays.toString(request.getParameterValues("prize")).
+        String description = Arrays.toString((request.getParameterValues("description"))).replaceAll("[^a-z\sA-Z0-9]", "");
+        String category = Arrays.toString(request.getParameterValues("category")).replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
+        String delivery = Arrays.toString(request.getParameterValues("delivery")).replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
+        String state = Arrays.toString(request.getParameterValues("state")).replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
+        String localization = Arrays.toString(request.getParameterValues("localization")).replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
+        int quantity = Integer.parseInt(Arrays.toString(request.getParameterValues("quantity")).replaceAll("[^a-zA-Z0-9]", ""));
+        Double prize = Double.parseDouble(Arrays.toString(request.getParameterValues("prize")).
                 replaceAll("[^\\d,]+", "").
                 replace(",", "."));
+
+        System.out.println((name + " " + category + " " + delivery + " " + state + " " + localization
+                + " " + quantity + " " + prize + " " + description));
         String uploadPath = "";
+
         try {
             Part file = request.getPart("image");
             String imageFileName = file.getSubmittedFileName();
@@ -53,13 +70,10 @@ public class ProductDAO extends EntityManager implements IProductDAO {
         } catch (ServletException | IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(name);
-        System.out.println(category);
-        System.out.println(delivery);
-        System.out.println(city);
-        System.out.println(state);
-        System.out.println(prize);
-        System.out.println(uploadPath);
+        Product product = new Product(0, name, prize, quantity, description, Product.State.valueOf(state)
+                , Product.Category.valueOf(category), Product.Delivery.valueOf(delivery)
+                , Product.Localization.valueOf(localization), uploadPath);
+        super.persist(product);
     }
 
     @Override
@@ -68,11 +82,11 @@ public class ProductDAO extends EntityManager implements IProductDAO {
         Query<Product> query = session.createQuery(
                 createQuery(name, category, delivery, state, localization, prize),
                 Product.class);
-        System.out.println(createQuery(name, category, delivery, state, localization, prize));
+       // System.out.println(createQuery(name, category, delivery, state, localization, prize));
         setQueryParameters(query, name, category, delivery, state, localization, prize);
         List<Product> productList = query.getResultList();
         session.close();
-        return null;// productList;
+        return productList;
     }
 
     @Override

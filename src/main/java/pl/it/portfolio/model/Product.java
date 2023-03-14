@@ -11,8 +11,6 @@ public class Product implements Saveable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToMany
-    private Set<Order> orders = new HashSet<>();
     private String name;
     private double prize;
     private int quantity;
@@ -27,11 +25,8 @@ public class Product implements Saveable {
     private Delivery delivery;
     private String photoUrl;
 
-    public Product(int id, Delivery delivery, Set<Order> orders, String name, double prize,
-                   int quantity, String description, Localization localization, State state, String photoUrl, Category category) {
-        this.delivery = delivery;
+    public Product(int id, String name, double prize, int quantity, String description, State state, Category category, Delivery delivery, Localization localization, String photoUrl) {
         this.id = id;
-        this.orders = orders;
         this.name = name;
         this.prize = prize;
         this.quantity = quantity;
@@ -54,13 +49,6 @@ public class Product implements Saveable {
         this.id = id;
     }
 
-    public Set<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
-    }
 
     public String getName() {
         return name;
@@ -142,13 +130,14 @@ public class Product implements Saveable {
         LODZ,
         POZNAN,
         GDANSK,
+        LUBLIN,
         SZCZECIN,
         BYDGOSZCZ,
         KATOWICE,
         GDYNIA,
         CZESTOCHOWA,
         RADOM,
-        RZESZOW;
+        RZESZOW
 
     }
 
@@ -156,7 +145,7 @@ public class Product implements Saveable {
         INPOST,
         ABROAD,
         COURIER,
-        SELFCOLlECT;
+        SELFCOLLECT
     }
 
     public enum State {
@@ -169,7 +158,7 @@ public class Product implements Saveable {
         ELECTRONICS,
         FASHION,
         KID,
-        SPUERMARKET,
+        SUPERMARKET,
         HOUSEANDGARDEN,
         BEAUTY,
         HEALTH,
@@ -178,7 +167,7 @@ public class Product implements Saveable {
         MOTORIZATION,
         PROPERTY,
         COLLECTIONANDART,
-        COMPANYANDSERVICE;
+        COMPANYANDSERVICES
     }
 
 }

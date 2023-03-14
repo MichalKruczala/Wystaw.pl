@@ -3,7 +3,6 @@ package pl.it.portfolio.controllers;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pl.it.portfolio.services.interfaces.IProductService;
 import pl.it.portfolio.session.SessionObject;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Arrays;
 
 @Controller
 public class ProductController {
@@ -34,7 +30,6 @@ public class ProductController {
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public String addOffer(HttpServletRequest request) throws ServletException, IOException {
         this.productService.addProduct(request);
-
 
         return "redirect:/main";
     }

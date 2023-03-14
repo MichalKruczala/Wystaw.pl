@@ -12,6 +12,7 @@ import java.util.Optional;
 public interface IProductService {
 
      void addProduct(HttpServletRequest request);
+
     void persistProduct(Product product);
 
     Optional<Product> getProductById(int id);

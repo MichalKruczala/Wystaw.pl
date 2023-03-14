@@ -14,8 +14,9 @@ public class Order implements Saveable {
     private int id;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderPosition> orderPosition = new LinkedList<>();
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     User user;
+    @Enumerated(EnumType.STRING)
     private Status state;
     private int total;
     private LocalDateTime date;

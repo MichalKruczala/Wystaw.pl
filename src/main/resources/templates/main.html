@@ -50,17 +50,14 @@ margin: 0px;
 <div id="contentContainer">
     <div th:replace="~{fragments.html::leftPanel}" id="leftSubContainer"></div>
     <div id="middleSubContainer">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        tu
+        <div th:each="product : ${productsForMain}">
+            <div th:text="${product.name}" class="features" ></div>
+
+            <!--dokonczyc-->
+
+        </div>
     </div>
-    <div th:replace="~{fragments.html::rightPanel}"></div>
+    <div th:replace="~{fragments.html::rightPanelComercial}"></div>
 </div>
 <script>
           <!--przycisk on top -->

@@ -31,6 +31,9 @@
   background-color: #44264A; /* ciemnofioletowy */
 
 }
+
+
+
     </style>
 </head>
 <body>
@@ -49,7 +52,8 @@
                 <h3>Twoje zdjęcie</h3>
                 <p>Załącznik powinien ważyć poniżej <span>2MB</span></p>
             </div>
-            <input readonly="readonly" class="select-image" style="color:red;" placeholder="Wybierz zdjęcie(opcjonalnie)"><br>
+            <input readonly="readonly" class="select-image" style="color:red;"
+                   placeholder="Wybierz zdjęcie(opcjonalnie)"><br>
 
             <div>
                 <h3>Nazwa*</h3>
@@ -95,7 +99,7 @@
             </div>
             <div>
                 <h3>Lokalizacja*</h3>
-                <select name="city">
+                <select name="localization">
                     <option selected disabled hidden>Wybierz lokalizację</option>
                     <option value="warszawa">Warszawa</option>
                     <option value="krakow">Kraków</option>
@@ -106,7 +110,7 @@
                     <option value="szczecin">Szczecin</option>
                     <option value="bydgoszcz">Bydgoszcz</option>
                     <option value="lublin">Lublin</option>
-                    <option value="bualystok">Białystok</option>
+                    <option value="bialystok">Białystok</option>
                     <option value="katowice">Katowice</option>
                     <option value="gdynia">Gdynia</option>
                     <option value="czestochowa">Częstochowa</option>
@@ -114,9 +118,17 @@
                     <option value="rzeszow">Rzeszów</option>
                 </select>
             </div>
-            <div class="features">
+            <div>
+                <h3>Ilość*</h3>
+                <input type="number" name="quantity" step="1" onchange="this.value = parseInt(this.value);">
+            </div>
+            <div>
                 <h3>Cena*</h3>
                 <input type='currency' name="prize" value="0.00" placeholder='Wprowadź cenę'>
+            </div>
+            <div>
+                <h3>Opis*</h3>
+                <textarea id="description" cols="46" name="description" oninput="disableSubmitButton();"></textarea>
             </div>
             <br>
             <input type="submit" class="select-image" value="Dodaj Ofertę">
@@ -141,6 +153,9 @@ function topFunction() {
 document.body.scrollTop = 0;
 document.documentElement.scrollTop = 0;
 }
+
+
+
 
 </script>
 </body>

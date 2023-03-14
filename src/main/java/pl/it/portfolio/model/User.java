@@ -11,8 +11,9 @@ public class User implements Saveable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Order> orders = new HashSet<>();
+    @Column(unique = true)
     private String login;
     private String password;
     private String name;

@@ -33,7 +33,7 @@
                     <option value="houseAndGarden">Dom i ogród</option>
                     <option value="beauty">Uroda</option>
                     <option value="health">Zdrowie</option>
-                    <option value="cultrureAndEntertainment">Kultura i rozrywka</option>
+                    <option value="cultureAndEntertainment">Kultura i rozrywka</option>
                     <option value="sportAndTurism">Sport i turystyka</option>
                     <option value="motorization">Motoryzacja</option>
                     <option value="property">Nieruchomości</option>
@@ -48,9 +48,9 @@
 </div>
 <div th:fragment="userPanel">                                             <!--  przycisk moje konto   -->
     <div id="position">
-        <a onclick="myFunction()"><img src="account.png" height="21px"  class="dropbtn"></a>
+        <a onclick="myFunction()"><img src="account.png" height="21px" class="dropbtn"></a>
         <div id="myDropdown" class="dropdown-content">
-            <a th:if="${!sessionObject.isLogged()}"  href="/register">Zarejestruj</a>
+            <a th:if="${!sessionObject.isLogged()}" href="/register">Zarejestruj</a>
             <a th:if="${!sessionObject.isLogged()}" href="/login">Zaloguj</a>
             <a th:if="${sessionObject.isLogged()}" href="/my/items">Wystawione przedmioty</a>
             <a th:if="${sessionObject.isLogged()}" href="/me">Moje dane</a>
@@ -58,9 +58,9 @@
         </div>
     </div>
 </div>
-<div th:fragment="cartBtn"><!-- przycisk koszyk ***  -->
+<div  th:if="${sessionObject.isLogged()}" th:fragment="cartBtn"><!-- przycisk koszyk ***  -->
     <a href="/cart" class="cartSign"><img src="cart.png"></a></div>
-<div th:fragment="addOfferBtn">  <!-- przycisk dodaj ofertę ***  -->
+<div th:if="${sessionObject.isLogged()}" th:fragment="addOfferBtn">  <!-- przycisk dodaj ofertę ***  -->
     <a href="/add" class="addSign"><img src="add.png"></a></div>
 
 <div th:fragment="leftPanel" class="leftPanel">                                          <!-- lewy panel ***  -->
@@ -78,7 +78,7 @@
                 <option value="houseAndGarden">Dom i ogród</option>
                 <option value="beauty">Uroda</option>
                 <option value="health">Zdrowie</option>
-                <option value="cultrureAndEntertainment">Kultura i rozrywka</option>
+                <option value="cultureAndEntertainment">Kultura i rozrywka</option>
                 <option value="sportAndTurism">Sport i turystyka</option>
                 <option value="motorization">Motoryzacja</option>
                 <option value="property">Nieruchomości</option>
@@ -119,7 +119,7 @@
                 <option value="szczecin">Szczecin</option>
                 <option value="bydgoszcz">Bydgoszcz</option>
                 <option value="lublin">Lublin</option>
-                <option value="bualystok">Białystok</option>
+                <option value="bialystok">Białystok</option>
                 <option value="katowice">Katowice</option>
                 <option value="gdynia">Gdynia</option>
                 <option value="czestochowa">Częstochowa</option>
@@ -141,7 +141,9 @@
         </div>
     </form>
 </div>
-<div th:fragment="rightPanel" id="rightSubContainer"><img id="fillDiv" src="reklama2.jpg" width="270px"> <!-- right panel -->  </div>
+<div th:fragment="rightPanelComercial" id="rightSubContainer"><img id="fillDiv" src="reklama2.jpg" width="270px">  <!-- right panel(comercial) -->
+</div>
+
 
 </body>
 

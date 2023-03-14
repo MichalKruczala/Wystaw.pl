@@ -8,7 +8,7 @@ public class OrderPosition implements Saveable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Product product;
     int quantity;
 
@@ -17,9 +17,10 @@ public class OrderPosition implements Saveable {
         this.product = product;
         this.quantity = quantity;
     }
-    public OrderPosition(Product product,int quantity){
-        this.product=product;
-        this.quantity=quantity;
+
+    public OrderPosition(Product product, int quantity) {
+        this.product = product;
+        this.quantity = quantity;
     }
 
     public OrderPosition() {
