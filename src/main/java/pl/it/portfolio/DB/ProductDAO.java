@@ -135,10 +135,10 @@ public class ProductDAO extends EntityManager implements IProductDAO {
     public void setQueryParameters(Query<Product> query, String name, String category, String delivery, String state,
                                    String localization, Double prize) {
         Map<String, String> params = new HashMap<>();
-       params.put("name", (name == null) ? "" : name);
-        params.put("category", (category == null) ? "" : category);
-        params.put("delivery", (delivery == null) ? "" : delivery);
-        params.put("state", (state == null) ? "" : state);
+        params.put("name", (name == null) ? "" : name);
+        params.put("category", (category == null) ? "" : category.toUpperCase());
+        params.put("delivery", (delivery == null) ? "" : delivery.toUpperCase());
+        params.put("state", (state == null) ? "" : state.toUpperCase());
         params.put("localization", (localization == null) ? "" : localization.toUpperCase());
         params.put("prize", (prize == null) ? "" : String.valueOf(prize));
 
@@ -150,8 +150,18 @@ public class ProductDAO extends EntityManager implements IProductDAO {
                 }
                 if (param.getKey().equals("name")) {
                     query.setParameter("name", "%" + name + "%");
-                } else {
-                    query.setParameter(param.getKey(), param.getValue());
+                }
+                if (param.getKey().equals("category")) {
+                    query.setParameter(param.getKey(), Product.Category.valueOf(param.getValue()));
+                }
+                if (param.getKey().equals("delivery")) {
+                    query.setParameter(param.getKey(), Product.Delivery.valueOf(param.getValue()));
+                }
+                if (param.getKey().equals("state")) {
+                    query.setParameter(param.getKey(), Product.State.valueOf(param.getValue()));
+                }
+                if (param.getKey().equals("localization")) {
+                    query.setParameter(param.getKey(), Product.Localization.valueOf(param.getValue()));
                 }
             }
         }
