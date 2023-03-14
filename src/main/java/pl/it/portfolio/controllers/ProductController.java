@@ -1,13 +1,16 @@
 package pl.it.portfolio.controllers;
 
+import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.it.portfolio.services.interfaces.IProductService;
+import pl.it.portfolio.session.SessionObject;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,12 +19,15 @@ import java.util.Arrays;
 
 @Controller
 public class ProductController {
- @Autowired
+    @Autowired
     IProductService productService;
+    @Resource
+    SessionObject sessionObject;
 
 
     @RequestMapping(path = "/add", method = RequestMethod.GET)
-    public String addOffer() {
+    public String addOffer(Model model) {
+        model.addAttribute("sessionObject",this.sessionObject);
         return "offeradd";
     }
 

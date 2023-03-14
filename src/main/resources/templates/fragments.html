@@ -26,6 +26,7 @@
                        id="roll-input">
                 <select name="category" id="selectCategory" style="height:50px;width:19%;font-size:14pt;">
                     <option selected disabled hidden>Wybierz kategorię</option>
+                    <option value="electronics">Elektronika</option>
                     <option value="fashion">Moda</option>
                     <option value="kid">Dziecko</option>
                     <option value="supermarket">Sumermarket</option>
@@ -49,10 +50,11 @@
     <div id="position">
         <a onclick="myFunction()"><img src="account.png" height="21px"  class="dropbtn"></a>
         <div id="myDropdown" class="dropdown-content">
-            <a href="/login">Zaloguj</a>
-            <a href="#about">Wystawione przedmioty</a>
-            <a href="#about">Moje dane</a>
-            <a href="/logout">Wyloguj</a>
+            <a th:if="${!sessionObject.isLogged()}"  href="/register">Zarejestruj</a>
+            <a th:if="${!sessionObject.isLogged()}" href="/login">Zaloguj</a>
+            <a th:if="${sessionObject.isLogged()}" href="/my/items">Wystawione przedmioty</a>
+            <a th:if="${sessionObject.isLogged()}" href="/me">Moje dane</a>
+            <a th:if="${sessionObject.isLogged()}" href="/logout">Wyloguj</a>
         </div>
     </div>
 </div>

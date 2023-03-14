@@ -33,7 +33,7 @@ public class UserDAO extends EntityManager implements IUserDAO {
     public Optional<User> findUserByLogin(String login) {
         Session session = this.sessionFactory.openSession();
         Query<User> query = session.createQuery(
-                "FROM bootcamp.it.exercise.forum.model.User WHERE login =:login", User.class);
+                "FROM pl.it.portfolio.model.User WHERE login =:login", User.class);
         query.setParameter("login", login);
         Optional<User> result = Optional.empty();
         try {

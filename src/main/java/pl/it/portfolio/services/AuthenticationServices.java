@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.it.portfolio.DB.interfaces.IUserDAO;
 import pl.it.portfolio.exceptions.UserLoginExistException;
+
 import pl.it.portfolio.model.User;
 import pl.it.portfolio.services.interfaces.IAuthencitationService;
 import pl.it.portfolio.session.SessionObject;
@@ -13,7 +14,7 @@ import pl.it.portfolio.session.SessionObject;
 import java.util.Optional;
 
 @Service
-public class Authenticationervices implements IAuthencitationService {
+public class AuthenticationServices implements IAuthencitationService {
     @Autowired
     IUserDAO userDAO;
 
@@ -24,7 +25,7 @@ public class Authenticationervices implements IAuthencitationService {
     public void authenticate(String login, String password) {
         Optional<User> userBox = this.userDAO.findUserByLogin(login);
         if (userBox.isPresent() && userBox.get().getPassword().equals(DigestUtils.md5Hex(password))) {
-            this.sessionObject.setUser(     //to ustawiamy typka w sesji
+            this.sessionObject.setUser(
                     new User.UserBuilder()
                             .clone(userBox.get())
                             .password(null)
@@ -42,6 +43,11 @@ public class Authenticationervices implements IAuthencitationService {
     public void registerUser(User user) throws UserLoginExistException {
         user.setRole(User.Role.USER);
         this.userDAO.saveUser(user);
+    }
+
+    @Override
+    public Optional<User> findUserBylogin(String login) {
+        return userDAO.findUserByLogin(login);
     }
 
 

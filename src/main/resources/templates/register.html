@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Koszyk</title>
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="userMenu.css">
-    <link rel="stylesheet" href="content.css">
+  <meta charset="UTF-8">
+  <title>Zarejestruj</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="userMenu.css">
+  <link rel="stylesheet" href="content.css">
 
-    <script src="/userMenu.js"></script>
-    <script src="/buttonOnTop.js"></script>
-    <script src="/userValidator.js"></script>
-    <style>
+  <script src="/userMenu.js"></script>
+  <script src="/buttonOnTop.js"></script>
+  <style>
         body{
 background-repeat: no-repeat;
 background-image: url("tlo.jpg");
@@ -47,15 +46,19 @@ margin: 0px;
 <div th:replace="~{fragments.html::userPanel}"></div>
 
 <div id="contentContainer">
-    <div th:replace="~{fragments.html::leftPanel}" id="leftSubContainer"></div>
-    <div id="middleSubContainer">
-        <form method="post" id="form" onsubmit="return validateLoginForm()">
-            <input type="text" placeholder="Login" class="text-input" name="login" id="login">
-            <input type="password" placeholder="Password" class="text-input" name="password" id="password">
-            <input type="submit" value="Zaloguj" class="button">
-        </form>
-    </div>
-    <div th:replace="~{fragments.html::rightPanel}"></div>
+  <div th:replace="~{fragments.html::leftPanel}" id="leftSubContainer"></div>
+  <div id="middleSubContainer">
+    <form method="post">
+      <input type="text" placeholder="Imie" th:field="*{user.name}">
+      <input type="text" placeholder="Nazwisko" th:field="*{user.surname}">
+      <input type="text" placeholder="login" th:field="*{user.login}">
+      <input type="password" placeholder="Hasło" th:field="*{user.password}">
+      <input type="password" placeholder="Powtórz hasło" name="password2">
+      <input type="submit" placeholder="Zarejestruj">
+      <p style="color:white;" >Imię i nazwisko powinny zaczynać się dużą literą.</p>
+    </form>
+  </div>
+  <div th:replace="~{fragments.html::rightPanel}"></div>
 </div>
 <script>
           <!--przycisk on top -->

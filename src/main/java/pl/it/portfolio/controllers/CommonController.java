@@ -8,14 +8,12 @@ import pl.it.portfolio.session.SessionObject;
 
 @Controller
 public class CommonController {
-
     @Resource
     SessionObject sessionObject;
 
-
-
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String main2() {
+    public String main2(Model model) {
+        model.addAttribute("sessionObject",this.sessionObject);
         return "main";
     }
 

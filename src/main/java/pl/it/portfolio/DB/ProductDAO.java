@@ -64,14 +64,14 @@ public class ProductDAO extends EntityManager implements IProductDAO {
 
     @Override
     public List<Product> listProductsByParams(String name, String category, String delivery, String state, String localization, Double prize) {
-      //  Session session = this.sessionFactory.openSession();
-     //   Query<Product> query = session.createQuery(
-         //       createQuery(name, category, delivery, state, localization, prize),
-         //       Product.class);
+        Session session = this.sessionFactory.openSession();
+        Query<Product> query = session.createQuery(
+                createQuery(name, category, delivery, state, localization, prize),
+                Product.class);
         System.out.println(createQuery(name, category, delivery, state, localization, prize));
-       // setQueryParameters(query, name, category, delivery, state, localization, prize);
-      //  List<Product> productList = query.getResultList();
-      //  session.close();
+        setQueryParameters(query, name, category, delivery, state, localization, prize);
+        List<Product> productList = query.getResultList();
+        session.close();
         return null;// productList;
     }
 
@@ -100,10 +100,10 @@ public class ProductDAO extends EntityManager implements IProductDAO {
         Map<String, String> params = new HashMap<>();
 
         params.put("name", (name == null) ? "" : name);
-        params.put("category", (category == null) ? "" : category.toUpperCase());
-        params.put("delivery", (delivery == null) ? "" : delivery.toUpperCase());
-        params.put("state", (state == null) ? "" : state.toUpperCase());
-        params.put("localization", (localization == null) ? "" : localization.toUpperCase());
+        params.put("category", (category == null) ? "" : category);
+        params.put("delivery", (delivery == null) ? "" : delivery);
+        params.put("state", (state == null) ? "" : state);
+        params.put("localization", (localization == null) ? "" : localization);
         params.put("prize", (prize == null) ? "" : String.valueOf(prize));
 
         System.out.println(params);
@@ -135,23 +135,23 @@ public class ProductDAO extends EntityManager implements IProductDAO {
     public void setQueryParameters(Query<Product> query, String name, String category, String delivery, String state,
                                    String localization, Double prize) {
         Map<String, String> params = new HashMap<>();
-        params.put("name", (name == null) ? "" : name);
+       params.put("name", (name == null) ? "" : name);
         params.put("category", (category == null) ? "" : category);
         params.put("delivery", (delivery == null) ? "" : delivery);
         params.put("state", (state == null) ? "" : state);
-        params.put("localization", (localization == null) ? "" : localization);
+        params.put("localization", (localization == null) ? "" : localization.toUpperCase());
         params.put("prize", (prize == null) ? "" : String.valueOf(prize));
 
         for (Map.Entry<String, String> param : params.entrySet()) {
             if (!param.getValue().equals("")) {
                 if (param.getKey().equals("prize")) {
-                    query.setParameter("startPrize", "0");
-                    query.setParameter("endPrize", String.valueOf(prize));
+                    query.setParameter("startPrize", 0);
+                    query.setParameter("endPrize", prize);
                 }
                 if (param.getKey().equals("name")) {
                     query.setParameter("name", "%" + name + "%");
                 } else {
-                    query.setParameter(param.getKey(),param.getValue());
+                    query.setParameter(param.getKey(), param.getValue());
                 }
             }
         }

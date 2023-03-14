@@ -24,10 +24,10 @@ public class Product implements Saveable {
     @Enumerated(EnumType.STRING)
     private Category category;
     @Enumerated(EnumType.STRING)
-    private Delivety delivery;
+    private Delivery delivery;
     private String photoUrl;
 
-    public Product(int id, Delivety delivery, Set<Order> orders, String name, double prize,
+    public Product(int id, Delivery delivery, Set<Order> orders, String name, double prize,
                    int quantity, String description, Localization localization, State state, String photoUrl, Category category) {
         this.delivery = delivery;
         this.id = id;
@@ -120,11 +120,11 @@ public class Product implements Saveable {
         this.category = category;
     }
 
-    public Delivety getDelivery() {
+    public Delivery getDelivery() {
         return delivery;
     }
 
-    public void setDelivery(Delivety delivery) {
+    public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
     }
 
@@ -152,7 +152,7 @@ public class Product implements Saveable {
 
     }
 
-    public enum Delivety {
+    public enum Delivery {
         INPOST,
         ABROAD,
         COURIER,
@@ -166,19 +166,19 @@ public class Product implements Saveable {
     }
 
     public enum Category {
-        ELEKTRONIA,
-        MODA,
-        DZIECKO,
+        ELECTRONICS,
+        FASHION,
+        KID,
         SPUERMARKET,
-        DOMIOGROD,
-        URODA,
-        ZDROWIE,
-        KULTURAIROZRYWKA,
-        SPORTITURYSTYKA,
-        MOTORYZACJA,
-        NIERUCHOMOSCI,
-        KOLEKCJEISZTUKA,
-        RIRMAIUSLUGI
+        HOUSEANDGARDEN,
+        BEAUTY,
+        HEALTH,
+        CULTUREANDENTERTAINMENT,
+        SPORTANDTURISM,
+        MOTORIZATION,
+        PROPERTY,
+        COLLECTIONANDART,
+        COMPANYANDSERVICE;
     }
 
 }
