@@ -69,14 +69,11 @@
     width: -webkit-calc(100% - 400px);
     height: 99%;
 }
-
 div#adOnTop {
-    height: 180px;
+  height: 181px;
 }
 
-comercial {
-    object-fit: cover;
-}
+
 
 .features {
     border-bottom: 1px solid grey;

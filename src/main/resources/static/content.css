@@ -13,10 +13,12 @@
     #middleSubContainer {
         display: inline-block;
         width: 50%;
-        background: blue;
+        background-color: rgba(83, 72, 90, 0.2);
         position: absolute;
         margin-left: 20px;
         top: 303px;
+        border-top: 1px solid grey;
+        border-radius: 3px;
     }
 
     #rightSubContainer {
@@ -27,4 +29,19 @@
         top: 303px;
         left: 70%;
         display: inline-block;
+    }
+    #singleOfferDiv{
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding: 20px;
+
+    }
+    #singleOfferDiv:hover{
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 3px;
+    background-color: rgba(170, 155, 179, 0.38);
+    box-shadow: 10px 19px 16px 0px rgba(0, 0, 0, 0.5);
     }

@@ -55,25 +55,29 @@ public class ProductDAO extends EntityManager implements IProductDAO {
 
         System.out.println((name + " " + category + " " + delivery + " " + state + " " + localization
                 + " " + quantity + " " + prize + " " + description));
-        String uploadPath = "";
 
+        String uploadPath = "";
         try {
             Part file = request.getPart("image");
-            String imageFileName = file.getSubmittedFileName();
-            uploadPath = "C:/Users/Michał/IdeaProjects/Wystaw.pl/src/main/resources/static/uploadedPhotos/" + imageFileName;
-            FileOutputStream fos = new FileOutputStream(uploadPath);
-            InputStream is = file.getInputStream();
-            byte[] data = new byte[is.available()];
-            is.read(data);
-            fos.write(data);
-            fos.close();
+            if (file.equals(null)) {
+                uploadPath = "nophoto.jpg";
+                System.out.println(uploadPath);
+            } else {
+                uploadPath = file.getSubmittedFileName();
+                System.out.println(uploadPath);
+                FileOutputStream fos = new FileOutputStream("C:/Users/Michał/IdeaProjects/Wystaw.pl/src/main/resources/static/uploadedPhotos/" + uploadPath);
+                InputStream is = file.getInputStream();
+                byte[] data = new byte[is.available()];
+                is.read(data);
+                fos.write(data);
+                fos.close();
+            }
         } catch (ServletException | IOException e) {
             throw new RuntimeException(e);
         }
-        Product product = new Product(0, name, prize, quantity, description, Product.State.valueOf(state)
+        super.persist(new Product(0, name, prize, quantity, description, Product.State.valueOf(state)
                 , Product.Category.valueOf(category), Product.Delivery.valueOf(delivery)
-                , Product.Localization.valueOf(localization), uploadPath);
-        super.persist(product);
+                , Product.Localization.valueOf(localization), uploadPath));
     }
 
     @Override
@@ -82,7 +86,7 @@ public class ProductDAO extends EntityManager implements IProductDAO {
         Query<Product> query = session.createQuery(
                 createQuery(name, category, delivery, state, localization, prize),
                 Product.class);
-       // System.out.println(createQuery(name, category, delivery, state, localization, prize));
+        // System.out.println(createQuery(name, category, delivery, state, localization, prize));
         setQueryParameters(query, name, category, delivery, state, localization, prize);
         List<Product> productList = query.getResultList();
         session.close();

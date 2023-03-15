@@ -24,7 +24,6 @@ public class CommonController {
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String main(Model model) {
-        //TODO wrzucić w model po 2 ogloszenia z kazdej kategorii
         model.addAttribute("sessionObject", this.sessionObject);
         return "redirect:/";
     }

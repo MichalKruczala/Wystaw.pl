@@ -33,6 +33,7 @@ public class Product implements Saveable {
         this.localization = localization;
         this.description = description;
         this.state = state;
+        this.delivery = delivery;
         this.category = category;
         this.photoUrl = photoUrl;
     }
@@ -134,6 +135,7 @@ public class Product implements Saveable {
         SZCZECIN,
         BYDGOSZCZ,
         KATOWICE,
+        BIALYSTOK,
         GDYNIA,
         CZESTOCHOWA,
         RADOM,
