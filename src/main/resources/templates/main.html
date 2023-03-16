@@ -39,6 +39,12 @@ margin: 0px;
   opacity: 0.7;
 }
 
+
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -54,11 +60,14 @@ margin: 0px;
 <div id="contentContainer">
     <div th:replace="~{fragments.html::leftPanel}" id="leftSubContainer"></div>
     <div id="middleSubContainer">
-        <div id="singleOfferDiv" th:each="product : ${productsForMain}">
-            <img th:src="@{/uploadedPhotos/} + ${product.photoUrl}" alt="Zdjęcie produktu" height="150px">
-            <span th:text="${product.name}"></span>
-            <span th:text="${product.prize}"></span>
-            <span th:text="${product.quantity}"></span>
+        <div id="singleOfferDivContainer" th:each="product : ${productsForMain}">
+            <div id="photoDiv"><img id="photo " th:src="@{/uploadedPhotos/} + ${product.photoUrl}" alt="Zdjęcie produktu"
+                                 height="150px"></div>
+            <div id="data">
+                <a th:href="@{/single/offer/} + ${product.id}" ><h2 th:text="${product.name}"></h2></a>
+                <h3 th:text="@{Stan: } + ${product.state}"></h3>
+                <div id="prizePosition"><span th:text="@{cena:  } +${product.prize}+@{zł}"></span></div>
+            </div>
 
 
             <!--dokonczyc-->
@@ -90,6 +99,12 @@ function topFunction() {
     window.scrollTo(0, Math.max(document.documentElement.scrollTop - 90, 0));
   }
 }
+
+
+
+
+
+
 
 </script>
 </body>

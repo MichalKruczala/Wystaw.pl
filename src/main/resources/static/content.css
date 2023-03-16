@@ -30,18 +30,66 @@
         left: 70%;
         display: inline-block;
     }
-    #singleOfferDiv{
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
-    border-right: 1px solid grey;
-    border-bottom: 1px solid grey;
-    padding: 20px;
 
-    }
-    #singleOfferDiv:hover{
+    #singleOfferDivContainer:hover{
     margin-top: 6px;
     margin-bottom: 6px;
     margin-left: 3px;
     background-color: rgba(170, 155, 179, 0.38);
     box-shadow: 10px 19px 16px 0px rgba(0, 0, 0, 0.5);
     }
+ #singleOfferDivContainer{
+     display: row;
+     justify-content: center;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding: 12px;
+    }
+
+    .singleOfferDivContainer {
+
+      font-size: 0;
+    }
+
+
+    #data {
+    padding-left: 10px;
+    position: relative;
+       background-color: #D1D1D1;
+      width: 76%;
+      vertical-align: top;
+      display: inline-block;
+      height: 150px;
+    }
+    #photoDiv {
+      vertical-align: top;
+      text-align: center;
+      display: inline-block;
+      width: 22%;
+    background-color:#F2F2F2;
+      height: 150px;
+    }
+    #photo{
+    height: 100%;
+        width: auto;
+    }
+    #prizePosition {
+      position: absolute;
+      bottom: 2px;
+      right: 5px;
+      }
+      a{
+       text-decoration: none;
+      }
+    a:link {
+      color: #44264A;
+    }
+
+    a:hover {
+      color:white;
+       }
+
+    a:active {
+      color: yellow;
