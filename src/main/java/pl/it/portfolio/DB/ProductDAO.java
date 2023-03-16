@@ -100,9 +100,18 @@ public class ProductDAO extends EntityManager implements IProductDAO {
 
     @Override
     public Optional<Product> getProductById(int id) {
-        return Optional.empty();
+        Session session = this.sessionFactory.openSession();
+        Query<Product> query = session.createQuery(
+                "FROM pl.it.portfolio.model.Product WHERE id = :id",
+                Product.class);
+        query.setParameter("id", id);
+        Optional<Product> result = Optional.empty();
+        try {
+            result = Optional.of(query.getSingleResult());
+        } catch (NoResultException e) {}
+        session.close();
+        return result;
     }
-
 
     @Override
     public void updateProduct(Product product) {

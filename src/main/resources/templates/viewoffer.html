@@ -2,11 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Wystaw.pl</title>
-    <link rel="stylesheet" href="common.css">
+    <title>Offer</title>
     <link rel="stylesheet" href="userMenu.css">
     <link rel="stylesheet" href="content.css">
-
+    <link rel="stylesheet" href="common.css">
     <script src="/userMenu.js"></script>
     <script src="/buttonOnTop.js"></script>
     <style>
@@ -38,15 +37,11 @@ margin: 0px;
 #comercial {
   opacity: 0.7;
 }
-
-
     </style>
 </head>
 <body>
 <div th:replace="~{fragments.html::cartBtn}"></div>
 <div th:replace="~{fragments.html::addOfferBtn}"></div>
-
-
 <div th:replace="~{fragments.html::buttonOnTop}"></div>
 <div th:replace="~{fragments.html::adOnTop}"></div>
 <div th:replace="~{fragments.html::panel}"></div>
@@ -55,21 +50,10 @@ margin: 0px;
 <div id="contentContainer">
     <div th:replace="~{fragments.html::leftPanel}" id="leftSubContainer"></div>
     <div id="middleSubContainer">
-        <div id="singleOfferDivContainer" th:each="product : ${productsForMain}">
-            <div id="photoDiv"><img id="photo " th:src="@{/uploadedPhotos/} + ${product.photoUrl}"
-                                    alt="Zdjęcie produktu"
-                                    height="150px"></div>
-            <div id="data">
-                <a th:href="@{/view/offer?id=} + ${product.id}"><h2 th:text="${product.name}"></h2></a>
-                <h4 th:text="@{Stan:&nbsp} + ${product.state}"></h4>
-                <div id="prizePosition"><span th:text="${product.prize}+@{&nbspzł}"></span></div>
-            </div>
 
-
-            <!--dokonczyc-->
-
-        </div>
+        <!--dokonczyc-->
     </div>
+
     <div th:replace="~{fragments.html::rightPanelComercial}"></div>
 </div>
 <script>
@@ -88,21 +72,12 @@ function scrollFunction() {
     mybutton.style.display = "none";
   }
 }
-
 function topFunction() {
   if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
     window.requestAnimationFrame(topFunction);
     window.scrollTo(0, Math.max(document.documentElement.scrollTop - 90, 0));
   }
 }
-
-
-
-
-
-
-
-
 </script>
 </body>
 </html>

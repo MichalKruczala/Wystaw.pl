@@ -29,8 +29,6 @@ public class ListingController {
         System.out.println("listing get");
         this.listingService.listProductsByParams(name, category, delivery, state, localization, prize);
 
-
-        //TODO do modelu wrzucic ogloszenia ( szukane po name lub po name i ccategory
         return "main";
     }
 
