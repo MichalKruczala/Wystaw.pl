@@ -75,9 +75,19 @@
     height: 100%;
         width: auto;
     }
+#prizePositionViewOffer{
+ position: absolute;
+      bottom: 31px;
+      right: 5px;
+}
     #prizePosition {
       position: absolute;
       bottom: 2px;
+      right: 5px;
+      }
+      #quantityPosition {
+      position: absolute;
+      bottom: 16px;
       right: 5px;
       }
       a{

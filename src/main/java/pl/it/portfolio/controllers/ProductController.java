@@ -46,8 +46,14 @@ public class ProductController {
     @RequestMapping(path = "/view/offer", method = RequestMethod.GET)
     public String view(@RequestParam(value = "id") int id, Model model) {
         System.out.println(id);
+        Optional<Product> productOptional = this.productService.getProductById(id);
+        if (productOptional.isEmpty()) {
+            return "redirect:/main";
+        }
+        model.addAttribute("product", productOptional.get());
         model.addAttribute("sessionObject", this.sessionObject);
-        model.addAttribute("product", this.productService.getProductById(id));
-        return "viewoffer";
+
+
+        return "view-offer";
     }
 }

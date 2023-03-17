@@ -2,20 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Offer</title>
-    <link rel="stylesheet" href="userMenu.css">
-    <link rel="stylesheet" href="content.css">
-    <link rel="stylesheet" href="common.css">
+    <title>Oferta</title>
+    <link rel="stylesheet" href="/common.css">
+    <link rel="stylesheet" href="/userMenu.css">
+    <link rel="stylesheet" href="/content.css">
+
     <script src="/userMenu.js"></script>
     <script src="/buttonOnTop.js"></script>
     <style>
         body{
 background-repeat: no-repeat;
-background-image: url("tlo.jpg");
+background-image: url("/tlo.jpg");
 background-size: auto;
 margin: 0px;
 }
-/* przycisk do góry */
 #myBtn {
   display: none;
   position: fixed;
@@ -31,12 +31,14 @@ margin: 0px;
   border-radius: 2px;
   font-size: 30px;
 }
+
 #myBtn:hover {
   background-color: #44264A; /* ciemnofioletowy */
 }
 #comercial {
   opacity: 0.7;
 }
+
     </style>
 </head>
 <body>
@@ -49,21 +51,31 @@ margin: 0px;
 
 <div id="contentContainer">
     <div th:replace="~{fragments.html::leftPanel}" id="leftSubContainer"></div>
-    <div id="middleSubContainer">
+    <div id="middleSubContainer" class="center">
 
-        <!--dokonczyc-->
+        <div><img th:src="@{/uploadedPhotos/__${product.photoUrl}__}" alt="Zdjęcie produktu" height="300px"></div>
+
+        <h2 th:text="${product.name}"></h2>
+        <h4>Opis</h4>
+        <h2 th:text="${product.description}"></h2>
+        <h4 th:text="@{Stan:&nbsp} + ${product.state}"></h4>
+
+        <div><h3 th:text="@{lokalizacja:&nbsp} +${product.localization}"></h3></div>
+        <div><h3 th:text="@{sposób wysyłki:&nbsp} +${product.delivery}"></h3></div>
+        <div id="prizePositionViewOffer"><h3 th:text="@{ilość:&nbsp}+${product.quantity}"></h3>
+            <h3 th:text="@{cena:&nbsp} +${product.prize}+@{&nbspzł}"></h3></div>
+
+        <form th:object="${product}" action="add/cart" method="post">
+            <label for="quantity">Ilosć:</label>
+            <input type="number" id="quantity" th:field="*{quantity}" th:attr="min=1, max=${product.quantity}"/>
+            <button type="submit" class="niceBtn">Dodaj do Koszyka</button>
+        </form>
     </div>
-
+    <a th:if="${sessionObject.isLogged()}" th:href="@{/cart/add/{id}(id=${book.id})}" class="buy">Dodaj do koszyka</a>
     <div th:replace="~{fragments.html::rightPanelComercial}"></div>
 </div>
 <script>
           <!--przycisk on top -->
-
-let mybutton = document.getElementById("myBtn");
-
-window.onscroll = function() {
-  scrollFunction();
-};
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -72,12 +84,18 @@ function scrollFunction() {
     mybutton.style.display = "none";
   }
 }
+
 function topFunction() {
   if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
     window.requestAnimationFrame(topFunction);
     window.scrollTo(0, Math.max(document.documentElement.scrollTop - 90, 0));
   }
 }
+
+
+
+
+
 </script>
 </body>
 </html>

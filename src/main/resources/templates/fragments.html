@@ -9,7 +9,7 @@
 
 <div th:fragment="adOnTop">                                                        <!-- reklama u góry -->
     <div id="adOnTop" height="181px">
-        <img id="comercial" src="reklama.jpg" width="100%" height="181px" >
+        <img id="comercial" src="/reklama.jpg" width="100%" height="181px" >
     </div>
 </div>
 
@@ -19,7 +19,7 @@
 
 <div th:fragment="panel">                                                <!-- panel ***  -->
     <div id="maincontainer">
-        <div id="leftcolumn"><a href="/main" class="boxShadow"> <img src="logo2.png" height="51px"></a></div>
+        <div id="leftcolumn"><a href="/main" class="boxShadow"> <img src="/logo2.png" height="51px"></a></div>
         <div id="rightcolumn">
             <form action="/listing" method="get">
                 <input placeholder="Czego szukasz?" style="height:46px;width:28%;font-size:15pt;" name="name"
@@ -48,7 +48,7 @@
 </div>
 <div th:fragment="userPanel">                                             <!--  przycisk moje konto   -->
     <div id="position">
-        <a onclick="myFunction()"><img src="account.png" height="21px" class="dropbtn"></a>
+        <a onclick="myFunction()"><img src="/account.png" height="21px" class="dropbtn"></a>
         <div id="myDropdown" class="dropdown-content">
             <a th:if="${!sessionObject.isLogged()}" href="/register">Zarejestruj</a>
             <a th:if="${!sessionObject.isLogged()}" href="/login">Zaloguj</a>
@@ -59,9 +59,9 @@
     </div>
 </div>
 <div  th:if="${sessionObject.isLogged()}" th:fragment="cartBtn"><!-- przycisk koszyk ***  -->
-    <a href="/cart" class="cartSign"><img src="cart.png"></a></div>
+    <a href="/cart" class="cartSign"><img src="/cart.png"></a></div>
 <div th:if="${sessionObject.isLogged()}" th:fragment="addOfferBtn">  <!-- przycisk dodaj ofertę ***  -->
-    <a href="/add" class="addSign"><img src="add.png"></a></div>
+    <a href="/add" class="addSign"><img src="/add.png"></a></div>
 
 <div th:fragment="leftPanel" class="leftPanel">                                          <!-- lewy panel ***  -->
     <form action="/listing" method="get" oninput="x.value=parseInt(prize.value)">
@@ -141,7 +141,7 @@
         </div>
     </form>
 </div>
-<div th:fragment="rightPanelComercial" id="rightSubContainer"><img id="fillDiv" src="reklama2.jpg" width="270px">  <!-- right panel(comercial) -->
+<div th:fragment="rightPanelComercial" id="rightSubContainer"><img id="fillDiv" src="/reklama2.jpg" width="270px">  <!-- right panel(comercial) -->
 </div>
 
 
