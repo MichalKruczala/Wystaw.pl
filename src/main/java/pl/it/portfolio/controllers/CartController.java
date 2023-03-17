@@ -16,17 +16,13 @@ public class CartController {
     @RequestMapping(path = "/cart", method = RequestMethod.GET)
     public String cart(Model model) {
         model.addAttribute("sessionObject",this.sessionObject);
+      //  model.addAttribute("")
         return "cart";
     }
     @RequestMapping(path = "/add/cart", method = RequestMethod.GET)
     public String addBookToCart(@RequestParam int bookId,Model model) {
         model.addAttribute("sessionObject",this.sessionObject);
-//        try {
-//            this.cartService.addBookToCart(bookId);
-//        } catch (NotEnoughBookException e) {
-//            this.sessionObject.setInfo("Nie ma już więcej egzemplarzy !!!");
-//            return "redirect:/";
-//        }
+
         return "redirect:/";
     }
 }

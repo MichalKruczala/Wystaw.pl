@@ -49,4 +49,8 @@ public class OrderPosition implements Saveable {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public void incrementQuantity(int quantity) {
+        this.quantity += quantity;
+    }
 }
