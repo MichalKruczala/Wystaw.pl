@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Oferta</title>
+    <title>Wystaw.pl</title>
     <link rel="stylesheet" href="/common.css">
     <link rel="stylesheet" href="/userMenu.css">
     <link rel="stylesheet" href="/content.css">
@@ -16,6 +16,7 @@ background-image: url("/tlo.jpg");
 background-size: auto;
 margin: 0px;
 }
+/* przycisk do góry */
 #myBtn {
   display: none;
   position: fixed;
@@ -31,7 +32,6 @@ margin: 0px;
   border-radius: 2px;
   font-size: 30px;
 }
-
 #myBtn:hover {
   background-color: #44264A; /* ciemnofioletowy */
 }
@@ -40,11 +40,15 @@ margin: 0px;
 }
 
 
+
+
     </style>
 </head>
 <body>
 <div th:replace="~{fragments.html::cartBtn}"></div>
 <div th:replace="~{fragments.html::addOfferBtn}"></div>
+
+
 <div th:replace="~{fragments.html::buttonOnTop}"></div>
 <div th:replace="~{fragments.html::adOnTop}"></div>
 <div th:replace="~{fragments.html::panel}"></div>
@@ -52,36 +56,34 @@ margin: 0px;
 
 <div id="contentContainer">
     <div th:replace="~{fragments.html::leftPanel}" id="leftSubContainer"></div>
-    <div id="middleSubContainer" class="center">
+    <div id="middleSubContainer">
 
-        <div><img th:src="@{/uploadedPhotos/__${product.photoUrl}__}" alt="Zdjęcie produktu" height="300px"></div>
-
-        <h2 th:text="${product.name}"></h2>
-        <h4>Opis</h4>
-        <h2 th:text="${product.description}"></h2>
-        <h4 th:text="@{Stan:&nbsp} + ${product.state}"></h4>
-
-        <div><h3 th:text="@{lokalizacja:&nbsp} +${product.localization}"></h3></div>
-        <div><h3 th:text="@{sposób wysyłki:&nbsp} +${product.delivery}"></h3></div>
-        <div id="prizePositionViewOffer"><h3 th:text="@{ilość:&nbsp}+${product.quantity}"></h3>
-            <h3 th:text="@{cena:&nbsp} +${product.prize}+@{&nbspzł}"></h3></div>
-
-        <form th:object="${product}" action="add/cart" method="post">
-            <label for="quantity">Ilosć:</label>
-            <input type="number" id="quantity" th:field="*{quantity}" th:attr="min=1, max=${product.quantity}"/>
-            <div th:if="${sessionObject.isLogged}">
-                <button type="submit" class="niceBtn">Dodaj do Koszyka</button>
+        <!--        <div th:if="${#listByParam.isEmpty(list)}">-->
+        <!--            <span> Znaleźliśmy - 0 wyników dla twojego wyszukiwania}"></span>-->
+        <!--        </div>-->
+        <!--        th:unless="${#listByParam.isEmpty(list)}"-->
+        <div id="singleOfferDivContainer" th:each="product : ${listByParam}">
+            <div id="photoDiv"><img id="photo " th:src="@{/uploadedPhotos/} + ${product.photoUrl}"
+                                    alt="Zdjęcie produktu"
+                                    height="150px"></div>
+            <div id="data">
+                <a th:href="@{/view/offer?id=} + ${product.id}"><h2 th:text="${product.name}"></h2></a>
+                <h4 th:text="@{Stan:&nbsp} + ${product.state}"></h4>
+                <div id="prizePosition"><span th:text="${product.prize}+@{&nbspzł}"></span></div>
             </div>
-            <div th:unless="${sessionObject.isLogged}">
-                <a type="button" href="/login" class="niceBtn">Zaloguj się aby dodać do Koszyka</a>
-            </div>
-        </form>
+
+        </div>
     </div>
-
     <div th:replace="~{fragments.html::rightPanelComercial}"></div>
 </div>
 <script>
           <!--przycisk on top -->
+
+let mybutton = document.getElementById("myBtn");
+
+window.onscroll = function() {
+  scrollFunction();
+};
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -97,10 +99,6 @@ function topFunction() {
     window.scrollTo(0, Math.max(document.documentElement.scrollTop - 90, 0));
   }
 }
-
-
-
-
 
 
 </script>

@@ -59,12 +59,12 @@ public class ProductDAO extends EntityManager implements IProductDAO {
         String uploadPath = "";
         try {
             Part file = request.getPart("image");
-            if (file.equals(null)) {
+            if (!file.toString().equals("image")) {
                 uploadPath = "nophoto.jpg";
                 System.out.println(uploadPath);
             } else {
                 uploadPath = file.getSubmittedFileName();
-                System.out.println(uploadPath);
+              //  System.out.println(uploadPath);
                 FileOutputStream fos = new FileOutputStream("C:/Users/Michał/IdeaProjects/Wystaw.pl/src/main/resources/static/uploadedPhotos/" + uploadPath);
                 InputStream is = file.getInputStream();
                 byte[] data = new byte[is.available()];

@@ -53,7 +53,6 @@ public class ProductController {
         model.addAttribute("product", productOptional.get());
         model.addAttribute("sessionObject", this.sessionObject);
 
-
         return "view-offer";
     }
 }

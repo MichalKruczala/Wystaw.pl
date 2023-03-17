@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.it.portfolio.session.SessionObject;
 
 @Controller
@@ -16,5 +17,16 @@ public class CartController {
     public String cart(Model model) {
         model.addAttribute("sessionObject",this.sessionObject);
         return "cart";
+    }
+    @RequestMapping(path = "/add/cart", method = RequestMethod.GET)
+    public String addBookToCart(@RequestParam int bookId,Model model) {
+        model.addAttribute("sessionObject",this.sessionObject);
+//        try {
+//            this.cartService.addBookToCart(bookId);
+//        } catch (NotEnoughBookException e) {
+//            this.sessionObject.setInfo("Nie ma już więcej egzemplarzy !!!");
+//            return "redirect:/";
+//        }
+        return "redirect:/";
     }
 }

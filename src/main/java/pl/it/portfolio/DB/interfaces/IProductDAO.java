@@ -8,8 +8,11 @@ import java.util.Optional;
 
 public interface IProductDAO {
     List<Product> listProductsForMainWebSite();
+
     List<Product> listProductsByParams(String name, String category, String delivery, String state, String localization, Double prize);
+
     void addProduct(HttpServletRequest request);
+
     void persistProduct(Product product);
 
 

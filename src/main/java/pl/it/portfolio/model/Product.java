@@ -38,6 +38,21 @@ public class Product implements Saveable {
         this.photoUrl = photoUrl;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", prize=" + prize +
+                ", quantity=" + quantity +
+                ", description='" + description + '\'' +
+                ", localization=" + localization +
+                ", state=" + state +
+                ", category=" + category +
+                ", delivery=" + delivery +
+                ", photoUrl='" + photoUrl + '\'' +
+                '}';
+    }
 
     public Product() {
     }
