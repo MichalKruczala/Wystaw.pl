@@ -10,14 +10,14 @@ function validateLoginForm() {
         login.style.background = "#E72627";
         result = false;
     } else {
-        login.style.background = "#769B4B";
+        login.style.background = "#794E7C";
     }
 
     if(!regex.test(password.value)) {
         password.style.background = "#E72627";
         result = false;
     } else {
-        password.style.background = "#769B4B";
+        password.style.background = "#794E7C";
     }
 
     return result;

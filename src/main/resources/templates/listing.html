@@ -61,7 +61,7 @@ margin: 0px;
                                         alt="Zdjęcie produktu"
                                         height="150px"></div>
                 <div id="data">
-                    <a th:href="@{/view/offer?id=} + ${product.id}"><h2 th:text="${product.name}"></h2></a>
+                 <a th:href="@{/view/offer?id=} + ${product.id}"><h2 th:text="${product.name}" style="display: inline-block;"></h2></a>
                     <h4 th:text="@{Stan:&nbsp} + ${product.state}"></h4>
                     <div id="prizePosition"><span th:text="${product.prize}+@{&nbspzł}"></span></div>
                 </div>

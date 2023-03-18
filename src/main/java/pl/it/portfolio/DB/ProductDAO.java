@@ -7,10 +7,12 @@ import jakarta.servlet.http.Part;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import pl.it.portfolio.DB.interfaces.IProductDAO;
 import pl.it.portfolio.model.Order;
 import pl.it.portfolio.model.Product;
+import pl.it.portfolio.session.SessionObject;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,6 +22,8 @@ import java.util.*;
 
 @Repository
 public class ProductDAO extends EntityManager implements IProductDAO {
+    @Autowired
+    SessionObject sessionObject;
     protected ProductDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
@@ -59,12 +63,12 @@ public class ProductDAO extends EntityManager implements IProductDAO {
         String uploadPath = "";
         try {
             Part file = request.getPart("image");
-            if (!file.toString().equals("image")) {
+            if (file.toString().equals("image")) {
                 uploadPath = "nophoto.jpg";
                 System.out.println(uploadPath);
             } else {
                 uploadPath = file.getSubmittedFileName();
-              //  System.out.println(uploadPath);
+               System.out.println(uploadPath);
                 FileOutputStream fos = new FileOutputStream("C:/Users/Michał/IdeaProjects/Wystaw.pl/src/main/resources/static/uploadedPhotos/" + uploadPath);
                 InputStream is = file.getInputStream();
                 byte[] data = new byte[is.available()];
@@ -75,7 +79,7 @@ public class ProductDAO extends EntityManager implements IProductDAO {
         } catch (ServletException | IOException e) {
             throw new RuntimeException(e);
         }
-        super.persist(new Product(0, name, prize, quantity, description, Product.State.valueOf(state)
+        super.persist(new Product(0,this.sessionObject.getUser(), name, prize, quantity, description, Product.State.valueOf(state)
                 , Product.Category.valueOf(category), Product.Delivery.valueOf(delivery)
                 , Product.Localization.valueOf(localization), uploadPath));
     }

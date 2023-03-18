@@ -11,6 +11,9 @@ public class Product implements Saveable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    User user;
     private String name;
     private double prize;
     private int quantity;
@@ -25,8 +28,17 @@ public class Product implements Saveable {
     private Delivery delivery;
     private String photoUrl;
 
-    public Product(int id, String name, double prize, int quantity, String description, State state, Category category, Delivery delivery, Localization localization, String photoUrl) {
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Product(int id, User user, String name, double prize, int quantity, String description, State state, Category category, Delivery delivery, Localization localization, String photoUrl) {
         this.id = id;
+        this.user = user;
         this.name = name;
         this.prize = prize;
         this.quantity = quantity;

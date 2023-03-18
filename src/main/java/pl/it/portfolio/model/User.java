@@ -13,6 +13,10 @@ public class User implements Saveable {
     private int id;
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Order> orders = new HashSet<>();
+
+
+    @OneToMany
+    private Set<Product> products = new HashSet<>();
     @Column(unique = true)
     private String login;
     private String password;
@@ -31,7 +35,27 @@ public class User implements Saveable {
         this.role = role;
     }
 
+    public User(int id, Set<Product> products, Set<Order> orders, String login, String password, String name, String surname, Role role) {
+        this.id = id;
+        this.products = products;
+        this.orders = orders;
+        this.login = login;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.role = role;
+    }
+
+
     public User() {
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 
     public int getId() {

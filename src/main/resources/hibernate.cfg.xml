@@ -12,7 +12,7 @@
         <property name="hibernate.connection.password"/>
 
         <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
 
         <mapping class="pl.it.portfolio.model.Product"/>
         <mapping class="pl.it.portfolio.model.Order"/>

@@ -56,13 +56,17 @@
 
     #data {
     padding-left: 10px;
+
     position: relative;
        background-color: #D1D1D1;
-      width: 76%;
+      width: 70%;
       vertical-align: top;
       display: inline-block;
       height: 150px;
     }
+   #data a {
+     display: inline-block;
+   }
     #photoDiv {
       vertical-align: top;
       text-align: center;
