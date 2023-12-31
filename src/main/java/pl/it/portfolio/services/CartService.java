@@ -22,17 +22,17 @@ public class CartService implements ICartService {
     SessionObject sessionObject;
 
 
-      @Override
-    public void addProductToCart(int productId,int quantity) throws NotEnoughProductException {
+    @Override
+    public void addProductToCart(int productId, int quantity) throws NotEnoughProductException {
         Map<Integer, OrderPosition> cart = this.sessionObject.getCart();
         Optional<Product> productOptional = this.productDAO.getProductById(productId);
-        if(productOptional.isEmpty()) {
+        if (productOptional.isEmpty()) {
             return;
         }
-        if(cart.get(productId) == null && productOptional.get().getQuantity() > 0) {
+        if (cart.get(productId) == null && productOptional.get().getQuantity() > 0) {
             cart.put(productId, new OrderPosition(productOptional.get(), quantity));
-        } else if(productOptional.get().getQuantity() > cart.get(productId).getQuantity()) {
-            cart.get(productId).incrementQuantity(quantity);
+        } else if (productOptional.get().getQuantity() > cart.get(productId).getQuantity()) {
+            cart.get(productId).addQuantity(quantity);
         } else {
             throw new NotEnoughProductException();
         }
@@ -44,8 +44,8 @@ public class CartService implements ICartService {
     }
 
     @Override
-    public void removeFromCart(int bookId) {
-        this.sessionObject.getCart().remove(bookId);
+    public void removeFromCart(int productId) {
+        this.sessionObject.getCart().remove(productId);
     }
 
     @Override
@@ -55,20 +55,8 @@ public class CartService implements ICartService {
 
     @Override
     public double calculateCartSum() {
-        return 0;
+        return this.sessionObject.getCart().values().stream()
+            .mapToDouble(op -> op.getQuantity() * op.getProduct().getPrize())
+            .sum();
     }
-
-//    @Override
-//    public double calculateCartSum() {
-//        /*double sum = 0.0;
-//        for(OrderPosition position : this.sessionObject.getCart().values()) {
-//            sum += position.getQuantity() * position.getBook().getPrice();
-//        }
-//        return sum;*/
-//        return this.sessionObject.getCart().values().stream()
-//        //   .mapToDouble(op -> op.getQuantity() * op.getBook().getPrice())
-//        //   .sum();
-//        //.reduce(0.0, Double::sum);
-//        // }  //TODO dokonczyc
-//    }
 }

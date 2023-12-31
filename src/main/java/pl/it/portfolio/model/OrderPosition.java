@@ -50,7 +50,7 @@ public class OrderPosition implements Saveable {
         this.quantity = quantity;
     }
 
-    public void incrementQuantity(int quantity) {
+    public void addQuantity(int quantity) {
         this.quantity += quantity;
     }
 }

@@ -95,7 +95,6 @@ public class Product implements Saveable {
         this.localization = localization;
     }
 
-
     public double getPrize() {
         return prize;
     }

@@ -24,6 +24,7 @@ import java.util.*;
 public class ProductDAO extends EntityManager implements IProductDAO {
     @Autowired
     SessionObject sessionObject;
+
     protected ProductDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
@@ -42,10 +43,17 @@ public class ProductDAO extends EntityManager implements IProductDAO {
         session.close();
         return products;
     }
-
     @Override
     public void addProduct(HttpServletRequest request) {
+        Map<String, String[]> mapa = request.getParameterMap();
 
+        for (Map.Entry<String, String[]> entry : mapa.entrySet()) {
+            String[] value = entry.getValue();
+        if (Arrays.toString(value).equals("[]") || Arrays.toString(value).contains("0,00")) {
+                System.out.println(Arrays.toString(value));
+                System.out.println("Znaleziono null w parametrze: " + entry.getKey());
+            }
+        }
         String name = Arrays.toString((request.getParameterValues("name"))).replaceAll("[^a-z\sA-Z0-9]", "");
         String description = Arrays.toString((request.getParameterValues("description"))).replaceAll("[^a-z\sA-Z0-9]", "");
         String category = Arrays.toString(request.getParameterValues("category")).replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
@@ -53,10 +61,8 @@ public class ProductDAO extends EntityManager implements IProductDAO {
         String state = Arrays.toString(request.getParameterValues("state")).replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
         String localization = Arrays.toString(request.getParameterValues("localization")).replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
         int quantity = Integer.parseInt(Arrays.toString(request.getParameterValues("quantity")).replaceAll("[^a-zA-Z0-9]", ""));
-        Double prize = Double.parseDouble(Arrays.toString(request.getParameterValues("prize")).
-                replaceAll("[^\\d,]+", "").
-                replace(",", "."));
-
+        double prize = Double.parseDouble(Arrays.toString(request.getParameterValues("prize")).replaceAll("[^\\d,]+", "").replace(",", "."));
+        System.out.println(request.getParameterMap().keySet());
         System.out.println((name + " " + category + " " + delivery + " " + state + " " + localization
                 + " " + quantity + " " + prize + " " + description));
 
@@ -68,7 +74,7 @@ public class ProductDAO extends EntityManager implements IProductDAO {
                 System.out.println(uploadPath);
             } else {
                 uploadPath = file.getSubmittedFileName();
-               System.out.println(uploadPath);
+                System.out.println(uploadPath);
                 FileOutputStream fos = new FileOutputStream("C:/Users/Michał/IdeaProjects/Wystaw.pl/src/main/resources/static/uploadedPhotos/" + uploadPath);
                 InputStream is = file.getInputStream();
                 byte[] data = new byte[is.available()];
@@ -77,19 +83,29 @@ public class ProductDAO extends EntityManager implements IProductDAO {
                 fos.close();
             }
         } catch (ServletException | IOException e) {
-            throw new RuntimeException(e);
+            //throw new RuntimeException(e);
+            System.out.println(" ***    Metoda zapisująca rzuciła wyjątek     ***");
         }
-        super.persist(new Product(0,this.sessionObject.getUser(), name, prize, quantity, description, Product.State.valueOf(state)
-                , Product.Category.valueOf(category), Product.Delivery.valueOf(delivery)
-                , Product.Localization.valueOf(localization), uploadPath));
+        super.persist(new Product(
+                0,
+                this.sessionObject.getUser(),
+                name,
+                prize,
+                quantity,
+                description,
+                Product.State.valueOf(state),
+                Product.Category.valueOf(category),
+                Product.Delivery.valueOf(delivery),
+                Product.Localization.valueOf(localization),
+                uploadPath));
     }
 
     @Override
     public List<Product> listProductsByParams(String name, String category, String delivery, String state, String localization, Double prize) {
         Session session = this.sessionFactory.openSession();
         Query<Product> query = session.createQuery(
-                createQuery(name, category, delivery, state, localization, prize),
-                Product.class);
+                createQuery(name, category, delivery, state, localization, prize), Product.class);
+
         // System.out.println(createQuery(name, category, delivery, state, localization, prize));
         setQueryParameters(query, name, category, delivery, state, localization, prize);
         List<Product> productList = query.getResultList();
@@ -112,7 +128,8 @@ public class ProductDAO extends EntityManager implements IProductDAO {
         Optional<Product> result = Optional.empty();
         try {
             result = Optional.of(query.getSingleResult());
-        } catch (NoResultException e) {}
+        } catch (NoResultException e) {
+        }
         session.close();
         return result;
     }

@@ -7,7 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "tuser")
-public class User implements Saveable {
+public class
+User implements Saveable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
