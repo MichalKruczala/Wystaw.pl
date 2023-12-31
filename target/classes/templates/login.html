@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Koszyk</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="userMenu.css">
+    <link rel="stylesheet" href="content.css">
+
+    <script src="/userMenu.js"></script>
+    <script src="/buttonOnTop.js"></script>
+    <script src="/userValidator.js"></script>
+    <style>
+        body{
+background-repeat: no-repeat;
+background-image: url("/tlo.jpg");
+background-size: auto;
+margin: 0px;
+}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #794E7C;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 2px;
+  font-size: 30px;
+}
+
+#myBtn:hover {
+  background-color: #44264A; /* ciemnofioletowy */
+}
+#comercial {
+  opacity: 0.7;
+}
+
+    </style>
+</head>
+<body>
+<div th:replace="~{fragments.html::cartBtn}"></div>
+<div th:replace="~{fragments.html::addOfferBtn}"></div>
+<div th:replace="~{fragments.html::buttonOnTop}"></div>
+<div th:replace="~{fragments.html::adOnTop}"></div>
+<div th:replace="~{fragments.html::panel}"></div>
+<div th:replace="~{fragments.html::userPanel}"></div>
+
+<div id="contentContainer">
+    <div th:replace="~{fragments.html::leftPanel}" id="leftSubContainer"></div>
+    <div id="middleSubContainer">
+        <form method="post" id="form" onsubmit="return validateLoginForm()">
+            <input type="text" placeholder="Login" class="text-input" name="login" id="login">
+            <input type="password" placeholder="Password" class="text-input" name="password" id="password">
+            <input type="submit" value="Zaloguj" class="button">
+        </form>
+    </div>
+    <div th:replace="~{fragments.html::rightPanelComercial}"></div>
+</div>
+<script>
+          <!--przycisk on top -->
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+    window.requestAnimationFrame(topFunction);
+    window.scrollTo(0, Math.max(document.documentElement.scrollTop - 90, 0));
+  }
+}
+
+</script>
+</body>
+</html>
