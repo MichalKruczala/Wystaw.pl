@@ -33,6 +33,9 @@ public class ProductController {
     @RequestMapping(path = "/add", method = RequestMethod.GET)
     public String addOffer(Model model) {
         model.addAttribute("sessionObject", this.sessionObject);
+        /*if(!sessionObject.isLogged()){
+            return "redirect:/main";    TODO ODKOMENTOWAĆ PRZY DZIAŁĄNIU PROGRAMU
+        }*/
         return "offeradd";
     }
 
