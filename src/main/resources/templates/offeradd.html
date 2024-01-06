@@ -145,8 +145,8 @@
     <script>
 
         function validateAll() {
-
-            var genderSelect = document.getElementById('delivery');  //radio
+         
+        
             var stateSelect = document.getElementById('state');    //radio
             var localizationSelect = document.getElementById('localization');  //select
 
@@ -179,6 +179,22 @@
             alert('Proszę wybrać sposób dostawy.');
             return false;
         }
+
+
+        var genderSelect = document.getElementById('delivery');  //radio
+        function validateDelivery() {
+            var deliveryOptions = document.getElementsByName('delivery');   // radio  po name!
+            for (var i = 0; i < deliveryOptions.length; i++) {
+                if (deliveryOptions[i].checked) {
+                    // Jeżeli którykolwiek jest zaznaczony, to jest OK
+                    return true;
+                }
+            }
+
+            // Żaden nie jest zaznaczony
+            alert('Proszę wybrać sposób dostawy.');
+            return false;
+
 
 
         // dropdowny     selecty        @@@@@@@@@@@@@@@ 
